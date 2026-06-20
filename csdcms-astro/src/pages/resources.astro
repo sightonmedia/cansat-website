@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BgPhoto from '../components/BgPhoto.astro';
+import { SPACE_PHOTOS } from '../lib/images';
+
+const BASE_YT = 'https://www.youtube.com/embed/';
+const BASE_PDF = 'https://www.csdcms.ca/Tutorials/';
+
+const tutorials = [
+  { ch: '01', title: "Introduction — What's In My Kit?", videoId: 'oXma818uG8c', pdf: null, primer: false },
+  { ch: '02', title: 'Installing the Arduino IDE',         videoId: 'pBNxx-GsPcc', pdf: '2_Arduino_IDE.pdf',  primer: false },
+  { ch: '03', title: 'Blinks &amp; Beeps',                videoId: 'USQl35GWguA', pdf: '3_Blinks_Beeps.pdf', primer: false },
+  { ch: '04', title: 'Connecting the SD Card Module',     videoId: 'rUPZ8T9Kvqo', pdf: '4_SD_Card.pdf',     primer: false },
+  { ch: null, title: 'Soldering',                         videoId: 'uH9aFieAsYY', pdf: null,                 primer: true  },
+  { ch: '05', title: 'Connecting the BMP-280 Sensor',     videoId: 'GJMm0oM-Gyk', pdf: '5_BMP280b.pdf',     primer: false },
+  { ch: '06', title: 'Connecting the MPU-6050 Sensor',    videoId: 'c_BmS2f04X4', pdf: '5_BMP280b.pdf',     primer: false },
+  { ch: null, title: 'Coding Introduction',               videoId: 'NLUHBCQxW2A', pdf: null,                 primer: true  },
+  { ch: '07', title: 'Creating a "FlatSat" — Part A',     videoId: 'GLNwJ5VJYNk', pdf: null,                 primer: false },
+  { ch: '07', title: 'Creating a "FlatSat" — Part B',     videoId: 'MqpnZAdSitg', pdf: null,                 primer: false },
+  { ch: '08', title: '"Shields Up, Mr. Sulu!"',           videoId: 'OPVdM_gr0BQ', pdf: null,                 primer: false },
+  { ch: '09', title: 'Final Integration',                 videoId: 'btS3jnOgCWI', pdf: null,                 primer: false },
+  { ch: '10', title: 'Parachute Design',                  videoId: null,           pdf: null,                 primer: false, pdfDirect: 'https://www.csdcms.ca/Docs/T10_Parachute_Design.pdf' },
+];
+---
+<Layout title="Resources" currentPage="/resources" description="Tutorial video series, PDF notes and the rules & requirements document for the CSDCMS CanSat Design Challenge.">
+
+  <!-- ── PAGE HEADER ───────────────────────────────────── -->
+  <section class="page-header s-nebula">
+    <BgPhoto src={SPACE_PHOTOS.rocketLaunch} variant="header" objectPosition="center 25%" />
+    <div class="container reveal">
+      <div class="eyebrow">Mission Files</div>
+      <h1>Resources</h1>
+      <p>The full tutorial video series, downloadable PDF notes, and the rules &amp; requirements document. Everything you need to go from unboxing to launch day.</p>
+    </div>
+  </section>
+
+  <!-- ── TUTORIAL SERIES ───────────────────────────────── -->
+  <section class="section s-deep">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Build series</div>
+        <h2>Tutorial video series</h2>
+        <p>
+          Twelve chapters walking you through the full Beginner build, from first boot of the Arduino IDE to parachute sizing.
+          The complete playlist is at <a href="https://www.youtube.com/@CSDCMS" target="_blank" rel="noopener" style="color:var(--signal);text-decoration:underline;">youtube.com/@CSDCMS</a>.
+        </p>
+      </div>
+
+      <div class="video-grid reveal">
+        {tutorials.map(t => (
+          <div class="video-card">
+            {t.videoId ? (
+              <div class="video-card__embed">
+                <iframe
+                  src={`${BASE_YT}${t.videoId}`}
+                  title={t.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
+              </div>
+            ) : (
+              <div class="video-card__pdf-only">
+                <span class="pdf-icon">📄</span>
+                <span style="font-family:var(--f-mono);font-size:.72rem;color:var(--star-dim);letter-spacing:.06em;">PDF ONLY</span>
+              </div>
+            )}
+            <div class="video-card__body">
+              <div class="video-card__meta">
+                {t.ch && <span class="video-card__ch">CH {t.ch}</span>}
+                {t.primer && <span class="video-card__primer-badge">Primer</span>}
+              </div>
+              <p class="video-card__title" set:html={t.title}></p>
+              <div class="video-card__actions">
+                {t.videoId && (
+                  <a
+                    class="btn btn--signal"
+                    href={`https://www.youtube.com/watch?v=${t.videoId}`}
+                    target="_blank" rel="noopener"
+                  >Watch on YouTube</a>
+                )}
+                {t.pdf && (
+                  <a
+                    class="btn btn--ghost"
+                    href={`${BASE_PDF}${t.pdf}`}
+                    target="_blank" rel="noopener"
+                  >Notes (PDF)</a>
+                )}
+                {t.pdfDirect && (
+                  <a
+                    class="btn btn--ghost"
+                    href={t.pdfDirect}
+                    target="_blank" rel="noopener"
+                  >Download PDF</a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RULES & REQUIREMENTS ──────────────────────────── -->
+  <section class="section s-cosmos">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Read before you build</div>
+        <h2>Rules &amp; Requirements</h2>
+        <p>The requirements document defines the science mission, build constraints, size and mass limits, documentation expectations, and the judging criteria for both categories.</p>
+      </div>
+      <div class="doc-card reveal">
+        <img
+          src="https://www.csdcms.ca/Docs/rules_doc.jpg"
+          alt="Cover of the CanSat Design Challenge rules document"
+          loading="lazy"
+        >
+        <div>
+          <div class="eyebrow" style="margin-bottom:var(--sp-3);">Current document</div>
+          <h3>2024–25 Rules &amp; Requirements</h3>
+          <p>The 2025–26 edition is being finalised. Major requirements are not expected to change significantly from last season. In the meantime, this document — English only — covers the full science mission spec, payload constraints, RF link requirements for Advanced teams, and competition scoring.</p>
+          <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap;margin-top:var(--sp-5);">
+            <a
+              class="btn btn--primary"
+              href="https://www.csdcms.ca/Docs/CSDC_CanSat_Requirements_2024-25.pdf"
+              target="_blank" rel="noopener"
+            >Download PDF</a>
+            <a class="btn btn--ghost" href="/contact">Ask a question</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LINKS ─────────────────────────────────────────── -->
+  <section class="section--sm s-nebula">
+    <div class="container">
+      <div class="grid-3 reveal">
+        <div class="card">
+          <div class="eyebrow" style="margin-bottom:var(--sp-3);">YouTube</div>
+          <h3 style="margin-bottom:var(--sp-3);">Full playlist</h3>
+          <p style="font-size:.9rem;margin-bottom:var(--sp-4);">All tutorial videos, in order, plus occasional extras on the CSDCMS channel.</p>
+          <a class="btn btn--signal" href="https://www.youtube.com/@CSDCMS" target="_blank" rel="noopener">Open channel</a>
+        </div>
+        <div class="card">
+          <div class="eyebrow" style="margin-bottom:var(--sp-3);">The Challenge</div>
+          <h3 style="margin-bottom:var(--sp-3);">Mission details</h3>
+          <p style="font-size:.9rem;margin-bottom:var(--sp-4);">Full breakdown of the science mission, both categories, past secondary experiments, and season timeline.</p>
+          <a class="btn btn--ghost" href="/challenge">Read the brief</a>
+        </div>
+        <div class="card">
+          <div class="eyebrow" style="margin-bottom:var(--sp-3);">Support</div>
+          <h3 style="margin-bottom:var(--sp-3);">Can't find what you need?</h3>
+          <p style="font-size:.9rem;margin-bottom:var(--sp-4);">A real person reads every message. If a tutorial doesn't cover something or a PDF link is broken, let us know.</p>
+          <a class="btn btn--ghost" href="/contact">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

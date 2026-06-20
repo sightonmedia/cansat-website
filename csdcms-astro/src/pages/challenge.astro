@@ -1,0 +1,228 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BgPhoto from '../components/BgPhoto.astro';
+import { SPACE_PHOTOS } from '../lib/images';
+---
+<Layout title="The Challenge" currentPage="/challenge" description="Everything about the CanSat Design Challenge — Beginner and Advanced categories, the science mission, and what past teams have built.">
+
+  <!-- ── PAGE HEADER ───────────────────────────────────── -->
+  <section class="page-header s-nebula">
+    <BgPhoto src={SPACE_PHOTOS.cosmicCliffs} variant="header" objectPosition="center 35%" />
+    <div class="container reveal">
+      <div class="eyebrow">Mission Brief · 2025–26</div>
+      <h1>The CanSat Challenge</h1>
+      <p>Two categories, one science mission, and a season's worth of engineering. Here's what every team is expected to do — and what's waiting for the best of them.</p>
+    </div>
+  </section>
+
+  <!-- ── THE SCIENCE MISSION ───────────────────────────── -->
+  <section class="section s-deep">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Every team — every category</div>
+        <h2>The science mission</h2>
+        <p>Both Beginner and Advanced teams carry the same core payload. Your CanSat must measure, record and return the following data from its flight.</p>
+      </div>
+      <div class="grid-2 reveal">
+        <div class="card">
+          <div class="eyebrow" style="margin-bottom:var(--sp-3);">Required</div>
+          <h3 style="margin-bottom:var(--sp-4);">Primary Payload</h3>
+          <dl class="spec-list">
+            <div class="spec-row"><dt>Sensor</dt><dd>BMP-280 or equivalent</dd></div>
+            <div class="spec-row"><dt>Measurement 1</dt><dd>Air pressure (hPa)</dd></div>
+            <div class="spec-row"><dt>Measurement 2</dt><dd>Temperature (°C)</dd></div>
+            <div class="spec-row"><dt>Optional</dt><dd>Relative humidity (%)</dd></div>
+            <div class="spec-row"><dt>Sampling rate</dt><dd>≥ 1 Hz throughout flight</dd></div>
+          </dl>
+        </div>
+        <div class="card">
+          <div class="eyebrow" style="margin-bottom:var(--sp-3);">Required</div>
+          <h3 style="margin-bottom:var(--sp-4);">Secondary Experiment</h3>
+          <p style="margin-bottom:var(--sp-4);">Every team must design and carry a secondary experiment of their own choosing. This is where your team's creativity enters the mission. Past examples include:</p>
+          <ul style="display:flex;flex-direction:column;gap:var(--sp-2);padding-left:var(--sp-4);">
+            <li style="font-size:.92rem;color:var(--star-soft);list-style:disc;">Gas / CO₂ concentration sensors</li>
+            <li style="font-size:.92rem;color:var(--star-soft);list-style:disc;">Multi-axis accelerometers and gyroscopes</li>
+            <li style="font-size:.92rem;color:var(--star-soft);list-style:disc;">Downward-facing camera systems</li>
+            <li style="font-size:.92rem;color:var(--star-soft);list-style:disc;">Deployable mini-drones or gliders</li>
+            <li style="font-size:.92rem;color:var(--star-soft);list-style:disc;">UV / particulate matter sensors</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BEGINNER ──────────────────────────────────────── -->
+  <section class="section s-cosmos">
+    <div class="container">
+      <div class="grid-2-wide">
+        <div class="reveal">
+          <div class="cat-card cat-card--beginner" style="height:100%;">
+            <div class="cat-card__bg"></div>
+            <span class="cat-card__tag">Category 01</span>
+            <h3 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;text-transform:uppercase;letter-spacing:.02em;">Beginner</h3>
+            <dl class="spec-list">
+              <div class="spec-row"><dt>Launch vehicle</dt><dd>Multirotor drone</dd></div>
+              <div class="spec-row"><dt>Release altitude</dt><dd>~120 m AGL</dd></div>
+              <div class="spec-row"><dt>Data return</dt><dd>On-board SD card</dd></div>
+              <div class="spec-row"><dt>Kit supplied</dt><dd>Yes — free of charge</dd></div>
+              <div class="spec-row"><dt>Location</dt><dd>TBD per season</dd></div>
+            </dl>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="eyebrow">What to expect</div>
+          <h2 style="margin-bottom:var(--sp-5);">Drone Drop</h2>
+          <p>The Beginner category is designed to be accessible to any secondary-school team, regardless of prior electronics experience. CSDCMS supplies a free CanSat kit — a PCB, sensor breakout boards, an SD card logger and the structural can — so your team's focus is on understanding, assembly and programming, not sourcing parts.</p>
+          <p style="margin-top:var(--sp-4);">On launch day, your CanSat is secured beneath a multirotor drone and carried to approximately 120 metres above ground level. It is released and descends under the parachute your team has designed and attached. The sensors log data throughout the descent; after recovery, your team analyses and presents their findings.</p>
+          <p style="margin-top:var(--sp-4);">The entire Beginner build is guided by the CSDCMS tutorial video series — twelve chapters covering everything from installing the Arduino IDE to parachute sizing calculations.</p>
+          <div style="margin-top:var(--sp-6);">
+            <a class="btn btn--ghost" href="/resources">View tutorial series →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ADVANCED ──────────────────────────────────────── -->
+  <section class="section s-nebula">
+    <div class="container">
+      <div class="grid-2-wide">
+        <div class="reveal">
+          <div class="eyebrow">What to expect</div>
+          <h2 style="margin-bottom:var(--sp-5);">Rocket Launch</h2>
+          <p>The Advanced category is the full mission. Your team designs and builds your own CanSat from scratch — no supplied kit — and your payload is launched by sounding rocket to an apogee above 1 km above ground level at the launch campaign in Lethbridge, Alberta.</p>
+          <p style="margin-top:var(--sp-4);">During descent, your CanSat transmits live telemetry via RF radio to a ground station your team also designs and operates. This is real radio-frequency engineering: link budget calculations, antenna design, modulation choices. Data logged on the SD card supplements the RF downlink.</p>
+          <p style="margin-top:var(--sp-4);">The top-performing Advanced team earns the right to represent Canada at the annual ESA CanSat competition in the Netherlands — sharing the launch field with winning teams from across Europe.</p>
+          <div style="margin-top:var(--sp-6);">
+            <a class="btn btn--signal" href="/register">Register for Advanced →</a>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="cat-card cat-card--advanced" style="height:100%;">
+            <div class="cat-card__bg" style="background-image:linear-gradient(rgba(78,216,240,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(78,216,240,0.04) 1px,transparent 1px);"></div>
+            <span class="cat-card__tag">Category 02</span>
+            <h3 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;text-transform:uppercase;letter-spacing:.02em;">Advanced</h3>
+            <dl class="spec-list">
+              <div class="spec-row"><dt>Launch vehicle</dt><dd>Sounding rocket</dd></div>
+              <div class="spec-row"><dt>Apogee</dt><dd>1 km+ AGL</dd></div>
+              <div class="spec-row"><dt>Data return</dt><dd>Live RF telemetry + SD</dd></div>
+              <div class="spec-row"><dt>Kit supplied</dt><dd>No — team designs PCB</dd></div>
+              <div class="spec-row"><dt>Location</dt><dd>Lethbridge, Alberta</dd></div>
+              <div class="spec-row"><dt>Top prize</dt><dd>ESA CanSat, Netherlands</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAUNCH DAY (image band) ───────────────────────── -->
+  <section class="image-band" style="padding-block:clamp(72px,10vw,120px);">
+    <BgPhoto src={SPACE_PHOTOS.rocketLaunch} variant="band" objectPosition="center 30%" />
+    <div class="container">
+      <div class="image-band__content reveal">
+        <div class="eyebrow" style="justify-content:center;">Launch day</div>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);">This is a real liftoff, not a simulation.</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT TEAMS HAVE BUILT ─────────────────────────── -->
+  <section class="section s-deep">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Past missions</div>
+        <h2>Secondary experiments teams have flown</h2>
+        <p>The secondary experiment is yours to define. These are the kinds of payloads Canadian teams have brought to the launchpad.</p>
+      </div>
+      <div class="experiments reveal">
+        <div class="experiment-card" data-num="01">
+          <h4>Atmospheric gas sensors</h4>
+          <p>Teams have flown CO₂ and VOC sensors to profile how gas concentrations change with altitude during ascent and descent — generating a vertical atmospheric snapshot in real time.</p>
+        </div>
+        <div class="experiment-card" data-num="02">
+          <h4>IMU &amp; vibration analysis</h4>
+          <p>Six-axis IMUs (accelerometer + gyroscope) have been used to characterise the mechanical environment of launch and deployment — useful data for future CanSat designers.</p>
+        </div>
+        <div class="experiment-card" data-num="03">
+          <h4>Descent cameras</h4>
+          <p>Teams have integrated downward-facing cameras to record the full descent, validating parachute deployment and drift, and producing aerial imagery of the recovery zone.</p>
+        </div>
+        <div class="experiment-card" data-num="04">
+          <h4>Deployable mini-drones</h4>
+          <p>One of the most ambitious secondary missions: a foldable micro-quadrotor that deploys after ejection and stabilises for independent controlled flight before the CanSat lands.</p>
+        </div>
+        <div class="experiment-card" data-num="05">
+          <h4>UV &amp; particulate sensing</h4>
+          <p>Environmental monitoring payloads measuring UV-B radiation and PM2.5 particulate concentration have produced altitude-resolved air-quality profiles above launch sites.</p>
+        </div>
+        <div class="experiment-card" data-num="06">
+          <h4>Custom RF link design</h4>
+          <p>Advanced teams have gone beyond the standard radio module and designed their own RF link — including custom PCB antennas, link-budget calculations and ground-station software.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SEASON TIMELINE ───────────────────────────────── -->
+  <section class="section s-cosmos">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">The season</div>
+        <h2>From registration to launch</h2>
+      </div>
+      <div class="timeline reveal">
+        <div class="timeline__row">
+          <div class="timeline__month"><span class="timeline__label">Sep</span></div>
+          <div class="timeline__content">
+            <h4>Registration opens</h4>
+            <p>Teams submit their school information and category selection. Beginner teams receive kit confirmation; Advanced teams begin preliminary design.</p>
+          </div>
+        </div>
+        <div class="timeline__row">
+          <div class="timeline__month"><span class="timeline__label">Oct–Nov</span></div>
+          <div class="timeline__content">
+            <h4>Kit delivery &amp; build start</h4>
+            <p>Beginner kits are shipped. All teams begin working through the tutorial series, setting up their development environment and assembling initial hardware.</p>
+          </div>
+        </div>
+        <div class="timeline__row">
+          <div class="timeline__month"><span class="timeline__label">Nov–Mar</span></div>
+          <div class="timeline__content">
+            <h4>Build season</h4>
+            <p>The core engineering phase. Teams iterate on hardware design, write and test sensor firmware, finalise their secondary experiment, and design the parachute system.</p>
+          </div>
+        </div>
+        <div class="timeline__row">
+          <div class="timeline__month"><span class="timeline__label">Apr–May</span></div>
+          <div class="timeline__content">
+            <h4>Beginner launch campaigns</h4>
+            <p>Beginner teams attend their regional launch day. CanSats are flight-checked, loaded under the drone, released, recovered and data-reviewed on site.</p>
+          </div>
+        </div>
+        <div class="timeline__row">
+          <div class="timeline__month"><span class="timeline__label">May–Jun</span></div>
+          <div class="timeline__content">
+            <h4>Advanced launch — Lethbridge, AB</h4>
+            <p>Advanced teams travel to the launch site, set up their ground stations, and fly. Data analysis and mission reports follow. The top team is announced and prepares for ESA.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ROW ───────────────────────────────────────── -->
+  <section class="section--sm s-nebula">
+    <div class="container" style="display:flex;gap:var(--sp-4);align-items:center;justify-content:space-between;flex-wrap:wrap;">
+      <div class="reveal">
+        <div class="eyebrow">Ready to fly?</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);">Register your team or explore the resources.</h2>
+      </div>
+      <div class="reveal" style="display:flex;gap:var(--sp-3);flex-wrap:wrap;flex-shrink:0;">
+        <a class="btn btn--primary btn--lg" href="/register">Register</a>
+        <a class="btn btn--ghost btn--lg" href="/resources">Resources</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,12 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+  variant?: 'hero' | 'header' | 'band';
+  objectPosition?: string;
+}
+const { src, alt = '', variant = 'header', objectPosition = 'center' } = Astro.props;
+---
+<div class={`bg-photo bg-photo--${variant}`} aria-hidden={alt ? undefined : 'true'}>
+  <img src={src} alt={alt} loading="eager" style={`object-position:${objectPosition}`} />
+</div>

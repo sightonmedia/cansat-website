@@ -1,0 +1,63 @@
+---
+interface Props { currentPage?: string; }
+const { currentPage = '' } = Astro.props;
+const links = [
+  { href: '/',           label: 'Home' },
+  { href: '/challenge',  label: 'Challenge' },
+  { href: '/register',   label: 'Register' },
+  { href: '/resources',  label: 'Resources' },
+  { href: '/board',      label: 'Board' },
+  { href: '/contact',    label: 'Contact' },
+];
+---
+<header class="site-header">
+  <div class="container">
+    <nav class="nav" data-open="false">
+      <a class="brand" href="/">
+        <img class="brand__mark"
+          src="https://www.csdcms.ca/Logos/CSDCMS_logo_200x200_on_black.png"
+          alt="CSDCMS logo"
+          width="36" height="36">
+        <span>
+          <span class="brand__title">CSDCMS</span>
+          <span class="brand__sub">CanSat Design Challenge</span>
+        </span>
+      </a>
+
+      <div class="nav__menu">
+        <ul class="nav__list">
+          {links.map(({ href, label }) => (
+            <li>
+              <a
+                class="nav__link"
+                href={href}
+                aria-current={currentPage === href ? 'page' : undefined}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a
+          class="btn btn--primary"
+          href="https://www.canadahelps.org/en/charities/canadian-satellite-design-challenge-management-society-inc/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Donate
+        </a>
+      </div>
+
+      <button
+        class="nav__toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span class="nav__toggle-icon">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+    </nav>
+  </div>
+</header>

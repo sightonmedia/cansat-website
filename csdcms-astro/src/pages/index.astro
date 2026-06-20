@@ -1,0 +1,225 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BgPhoto from '../components/BgPhoto.astro';
+import { SPACE_PHOTOS, CANSAT_PHOTO, SUPPORTER_LOGOS } from '../lib/images';
+---
+<Layout title="Home" currentPage="/">
+
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <section class="section hero s-void">
+    <BgPhoto src={SPACE_PHOTOS.blueMarble} variant="hero" objectPosition="65% 45%" />
+    <div class="container" style="display:contents;">
+      <div class="hero__content reveal" style="padding-inline:clamp(24px,5vw,64px);">
+        <div class="eyebrow">CanSat Design Challenge · 2025–26</div>
+        <h1 class="hero__headline">
+          Build a<br>Satellite.<br><em>Launch&nbsp;It.</em>
+        </h1>
+        <p class="hero__desc">
+          Every year, Canadian secondary-school teams design, build and fly a real
+          atmospheric science payload — the size of a soft-drink can — and bring
+          their data back safely under a parachute they made themselves.
+        </p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary btn--lg" href="/challenge">Explore the Challenge</a>
+          <a class="btn btn--ghost btn--lg" href="/resources">View Resources</a>
+        </div>
+      </div>
+
+      <!-- Orbital mechanics SVG -->
+      <div class="hero__visual">
+        <svg class="hero__svg" viewBox="0 0 560 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Radar rings from implied Earth below -->
+          <circle cx="280" cy="680" r="440" fill="none" stroke="white" stroke-width="1" opacity=".035"/>
+          <circle cx="280" cy="680" r="580" fill="none" stroke="white" stroke-width="1" opacity=".022"/>
+          <circle cx="280" cy="680" r="700" fill="none" stroke="white" stroke-width="1" opacity=".014"/>
+
+          <!-- Inner (beginner) orbit arc — orange -->
+          <path d="M 60 430 Q 130 210 280 175 Q 430 210 500 430"
+            fill="none" stroke="#f06030" stroke-width="1" stroke-dasharray="5 9" opacity=".35"/>
+
+          <!-- Outer (advanced) orbit arc — signal cyan -->
+          <path d="M -20 440 Q 60 80 280 38 Q 500 80 580 440"
+            fill="none" stroke="#4ed8f0" stroke-width="1.2" stroke-dasharray="7 11" opacity=".42"/>
+
+          <!-- Trajectory trail (already flown) -->
+          <path d="M 280 38 Q 160 70 80 190"
+            fill="none" stroke="#4ed8f0" stroke-width="1.5" stroke-dasharray="2 7" opacity=".55"/>
+
+          <!-- Apogee glow — outer orbit -->
+          <circle cx="280" cy="38" r="14" fill="#4ed8f0" opacity=".07"/>
+          <circle cx="280" cy="38" r="7"  fill="#4ed8f0" opacity=".16"/>
+          <circle cx="280" cy="38" r="3"  fill="#4ed8f0" opacity=".95"/>
+
+          <!-- Beginner apogee (inner arc) -->
+          <circle cx="280" cy="175" r="4" fill="#f06030" opacity=".8"/>
+          <circle cx="280" cy="175" r="10" fill="#f06030" opacity=".1"/>
+
+          <!-- Satellite icon at ~150° on outer arc -->
+          <g transform="translate(82,188) rotate(30)">
+            <!-- Solar panel L -->
+            <rect x="-34" y="-3.5" width="22" height="7" fill="#0a1525" stroke="#4ed8f0" stroke-width="1" opacity=".9"/>
+            <line x1="-27" y1="-3.5" x2="-27" y2="3.5" stroke="#4ed8f0" stroke-width=".5" opacity=".5"/>
+            <line x1="-19" y1="-3.5" x2="-19" y2="3.5" stroke="#4ed8f0" stroke-width=".5" opacity=".5"/>
+            <!-- Solar panel R -->
+            <rect x="12"  y="-3.5" width="22" height="7" fill="#0a1525" stroke="#4ed8f0" stroke-width="1" opacity=".9"/>
+            <line x1="19"  y1="-3.5" x2="19"  y2="3.5" stroke="#4ed8f0" stroke-width=".5" opacity=".5"/>
+            <line x1="27"  y1="-3.5" x2="27"  y2="3.5" stroke="#4ed8f0" stroke-width=".5" opacity=".5"/>
+            <!-- Body -->
+            <rect x="-12" y="-6.5" width="24" height="13" fill="#0d1e38" stroke="#4ed8f0" stroke-width="1.6"/>
+            <rect x="-7"  y="-4"   width="5"  height="8"  fill="#4ed8f0" opacity=".18"/>
+            <rect x="2"   y="-4"   width="5"  height="8"  fill="#4ed8f0" opacity=".10"/>
+            <!-- Antenna -->
+            <line x1="0" y1="-6.5" x2="0" y2="-19" stroke="#4ed8f0" stroke-width=".9" opacity=".85"/>
+            <circle cx="0" cy="-22" r="2.2" fill="#4ed8f0" opacity=".95"/>
+            <circle cx="0" cy="-22" r="7"   fill="#4ed8f0" opacity=".1"/>
+          </g>
+
+          <!-- Data callout panel -->
+          <g transform="translate(360,52)">
+            <rect x="0" y="0" width="168" height="78" fill="rgba(8,15,28,.85)" stroke="#4ed8f0" stroke-width=".6" opacity=".92"/>
+            <path d="M0 0 L12 0 M0 0 L0 12" stroke="#4ed8f0" stroke-width="1.6"/>
+            <path d="M168 78 L156 78 M168 78 L168 66" stroke="#4ed8f0" stroke-width="1.6"/>
+            <text x="12" y="18" fill="#4ed8f0" font-family="monospace" font-size="7.5" letter-spacing="1.2" opacity=".7">STATUS</text>
+            <text x="12" y="31" fill="#e8f2fc" font-family="monospace" font-size="10" font-weight="700">SEASON 2025–26</text>
+            <line x1="12" y1="38" x2="156" y2="38" stroke="#4ed8f0" stroke-width=".5" opacity=".3"/>
+            <text x="12" y="53" fill="#4ed8f0" font-family="monospace" font-size="7.5" letter-spacing="1.2" opacity=".7">CATEGORIES</text>
+            <text x="12" y="67" fill="#e8f2fc" font-family="monospace" font-size="9.5">BEGINNER · ADVANCED</text>
+          </g>
+
+          <!-- Altitude labels -->
+          <text x="298" y="38" fill="#4ed8f0" font-family="monospace" font-size="8" opacity=".6">1 km+</text>
+          <text x="298" y="175" fill="#f06030" font-family="monospace" font-size="8" opacity=".55">120 m</text>
+          <line x1="280" y1="38"  x2="293" y2="38"  stroke="#4ed8f0" stroke-width=".6" opacity=".4"/>
+          <line x1="280" y1="175" x2="293" y2="175" stroke="#f06030" stroke-width=".6" opacity=".35"/>
+
+          <!-- Corner brackets -->
+          <path d="M 16 16 L 42 16 M 16 16 L 16 42" stroke="#4ed8f0" stroke-width="1" opacity=".22"/>
+          <path d="M 544 444 L 518 444 M 544 444 L 544 418" stroke="#4ed8f0" stroke-width="1" opacity=".22"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT IS CANSAT (real hardware photo) ──────────── -->
+  <section class="section s-cosmos">
+    <div class="container">
+      <div class="feature-split">
+        <div class="reveal">
+          <div class="eyebrow">The Mission</div>
+          <h2 style="margin-bottom:var(--sp-5);">A real science instrument.<br>A real flight.</h2>
+          <p style="font-size:1.1rem;">
+            A CanSat is a pseudo-satellite small enough to fit inside a soft-drink can —
+            roughly 66 mm diameter, 115 mm tall — that carries sensors, collects flight data
+            and descends safely under a parachute the team designs and builds. It is not
+            a simulation and it is not a model: it goes up, it comes down, and the science
+            it records is real.
+          </p>
+        </div>
+        <div class="feature-photo reveal">
+          <img src={CANSAT_PHOTO} alt="A completed CanSat flight unit from the 2022 winning team, showing the onboard sensor board, antenna and battery wiring" loading="lazy">
+          <div class="feature-photo__caption">
+            <strong>Flight Unit — 2022</strong>
+            Winning team's CanSat, fully assembled
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TWO PATHS ─────────────────────────────────────── -->
+  <section class="section s-nebula" style="position:relative;overflow:hidden;">
+    <BgPhoto src={SPACE_PHOTOS.andromeda} variant="header" objectPosition="center 30%" />
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="section-head reveal">
+        <div class="eyebrow">Choose your path</div>
+        <h2>Two ways to fly</h2>
+        <p>Both categories share the same core science mission. How far you go — and how you get your CanSat into the sky — is up to your team.</p>
+      </div>
+      <div class="categories">
+        <div class="cat-card cat-card--beginner reveal">
+          <div class="cat-card__bg"></div>
+          <span class="cat-card__tag">Beginner</span>
+          <h3>Drone Drop</h3>
+          <p>
+            We supply a free CanSat kit. Your team assembles it, programs the sensors,
+            and we release it from a drone at roughly 120 metres — a real descent under
+            a real parachute your team designs.
+          </p>
+          <a class="btn btn--ghost" href="/challenge" style="margin-top:auto;">Learn more →</a>
+        </div>
+        <div class="cat-card cat-card--advanced reveal">
+          <div class="cat-card__bg" style="background-image:linear-gradient(rgba(78,216,240,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(78,216,240,0.04) 1px,transparent 1px);"></div>
+          <span class="cat-card__tag">Advanced</span>
+          <h3>Rocket Launch</h3>
+          <p>
+            Your team travels to Lethbridge, Alberta, and your CanSat is launched
+            by sounding rocket to above 1 km — transmitting live telemetry all
+            the way down. The top team represents Canada at the ESA CanSat
+            conference in the Netherlands.
+          </p>
+          <a class="btn btn--ghost" href="/challenge" style="margin-top:auto;">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FIELD NOTES (real mission photos) ─────────────── -->
+  <section class="section s-deep">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Field notes</div>
+        <h2>From last season's campaigns</h2>
+        <p>Real teams, real builds, real launch days — a few moments from the 2024–25 season.</p>
+      </div>
+      <div class="photolog reveal">
+        <div class="photolog__item">
+          <img src="https://www.csdcms.ca/Photos/FrontPage1.JPG" alt="CanSat Design Challenge team working on their satellite build" loading="lazy">
+          <div class="photolog__caption"><span>Log 01</span><span>Build Day</span></div>
+        </div>
+        <div class="photolog__item">
+          <img src="https://www.csdcms.ca/Photos/FrontPage2.JPG" alt="CanSat Design Challenge launch campaign in the field" loading="lazy">
+          <div class="photolog__caption"><span>Log 02</span><span>Launch Day</span></div>
+        </div>
+        <div class="photolog__item">
+          <img src="https://www.csdcms.ca/Photos/FrontPage3.JPG" alt="CanSat Design Challenge students with their finished satellite" loading="lazy">
+          <div class="photolog__caption"><span>Log 03</span><span>Mission Complete</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MISSION STATEMENT (Earth image band) ──────────── -->
+  <section class="image-band">
+    <BgPhoto src={SPACE_PHOTOS.pillars} variant="band" objectPosition="center 35%" />
+    <div class="container">
+      <div class="image-band__content reveal">
+        <div class="eyebrow" style="justify-content:center;">Why it matters</div>
+        <blockquote style="font-family:var(--f-display);font-weight:800;font-size:clamp(1.6rem,3.5vw,2.6rem);text-transform:uppercase;line-height:1.05;letter-spacing:.02em;color:var(--star);margin-bottom:var(--sp-5);">
+          "The best way to learn aerospace engineering is to actually do aerospace engineering."
+        </blockquote>
+        <p style="font-size:1.05rem;margin-inline:auto;">
+          CSDCMS is a registered Canadian charity whose entire purpose is to give secondary-school
+          students a credible, structured path into the space industry — one solder joint,
+          one sensor calibration, and one launch campaign at a time.
+        </p>
+        <div style="margin-top:var(--sp-6);display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap;">
+          <a class="btn btn--primary btn--lg" href="/register">Register your team</a>
+          <a class="btn btn--ghost" href="https://www.canadahelps.org/en/charities/canadian-satellite-design-challenge-management-society-inc/" target="_blank" rel="noopener">Support the mission</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SUPPORTERS ─────────────────────────────────────── -->
+  <section class="section--sm s-cosmos">
+    <div class="container">
+      <p class="eyebrow reveal" style="justify-content:center;text-align:center;display:flex;margin-bottom:var(--sp-5);">Mission partners</p>
+      <div class="supporters-grid reveal">
+        {SUPPORTER_LOGOS.map(logo => (
+          <div class="supporters-tile"><img src={logo.src} alt={logo.alt} loading="lazy"></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>

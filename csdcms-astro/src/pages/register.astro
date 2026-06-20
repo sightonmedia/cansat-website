@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BgPhoto from '../components/BgPhoto.astro';
+import { SPACE_PHOTOS } from '../lib/images';
+---
+<Layout title="Register" currentPage="/register" description="Register your team for the CSDCMS CanSat Design Challenge. Check current registration status and learn what to expect.">
+
+  <!-- ── PAGE HEADER ───────────────────────────────────── -->
+  <section class="page-header s-nebula">
+    <BgPhoto src={SPACE_PHOTOS.aurora} variant="header" objectPosition="center 60%" />
+    <div class="container reveal">
+      <div class="eyebrow">Join the Mission · 2025–26</div>
+      <h1>Register</h1>
+      <p>Registration for the 2025–26 season connects your school to the full CanSat programme — from kit delivery to launch day.</p>
+    </div>
+  </section>
+
+  <!-- ── STATUS ────────────────────────────────────────── -->
+  <section class="section s-deep">
+    <div class="container">
+      <div class="status-panel reveal">
+        <div class="status-led"></div>
+        <div class="status-panel__text">
+          <h3>Registration is currently closed</h3>
+          <p>The registration window for the 2025–26 season has closed. If your school would still like to enter a team this season, late registration is sometimes possible — get in touch and we'll talk through the options.</p>
+        </div>
+      </div>
+
+      <div class="section-head reveal">
+        <div class="eyebrow">What registration involves</div>
+        <h2>The process</h2>
+        <p>Registration is straightforward — we keep the paperwork minimal so your team can focus on building.</p>
+      </div>
+      <div class="reg-steps reveal">
+        <div class="reg-step reg-step--active">
+          <div class="reg-step__num">01 —</div>
+          <h4>Submit your team</h4>
+          <p>Tell us your school name, your supervising teacher, an estimated team size, and your chosen category (Beginner or Advanced).</p>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step__num">02 —</div>
+          <h4>Receive confirmation</h4>
+          <p>We confirm your registration and, for Beginner teams, arrange kit delivery. Advanced teams receive the requirements document and preliminary design brief.</p>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step__num">03 —</div>
+          <h4>Build season begins</h4>
+          <p>Work through the tutorial series, build your CanSat, iterate on your secondary experiment, and design the parachute system. The build season runs November through March.</p>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step__num">04 —</div>
+          <h4>Launch day</h4>
+          <p>Attend your launch campaign — Beginner teams at a regional site, Advanced teams in Lethbridge, Alberta. Fly, recover, analyse, present.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHICH CATEGORY ────────────────────────────────── -->
+  <section class="section s-cosmos">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Not sure which to choose?</div>
+        <h2>Beginner vs. Advanced</h2>
+      </div>
+      <div class="grid-2 reveal">
+        <div class="card">
+          <div class="eyebrow" style="margin-bottom:var(--sp-3);">Beginner</div>
+          <h3 style="margin-bottom:var(--sp-4);">Good starting point if…</h3>
+          <ul style="display:flex;flex-direction:column;gap:var(--sp-3);">
+            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--exhaust);">Your team has little or no electronics experience</li>
+            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--exhaust);">You want a structured, kit-guided introduction to embedded systems</li>
+            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--exhaust);">Your school can't fund travel to Lethbridge</li>
+            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--exhaust);">This is your team's first year in the Challenge</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="eyebrow" style="margin-bottom:var(--sp-3);">Advanced</div>
+          <h3 style="margin-bottom:var(--sp-4);">Good fit if…</h3>
+          <ul style="display:flex;flex-direction:column;gap:var(--sp-3);">
+            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--signal);">Your team has electronics / programming experience</li>
+            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--signal);">You want to design your own PCB from scratch</li>
+            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--signal);">Your team is motivated to compete at the national level</li>
+            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--signal);">You want a shot at representing Canada at the ESA competition</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────── -->
+  <section class="section s-nebula">
+    <div class="container" style="text-align:center;">
+      <div class="reveal" style="max-width:600px;margin-inline:auto;">
+        <div class="eyebrow" style="justify-content:center;">Get in touch</div>
+        <h2 style="margin-bottom:var(--sp-4);">Questions before you register?</h2>
+        <p style="margin-inline:auto;font-size:1.05rem;">Whether you're trying to decide on a category, wondering if your school qualifies, or just want to know what a launch day looks like — reach out. We're a small team and we respond to every message.</p>
+        <div style="margin-top:var(--sp-6);display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap;">
+          <a class="btn btn--primary btn--lg" href="/contact">Contact us</a>
+          <a class="btn btn--ghost" href="/challenge">Read the full brief</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

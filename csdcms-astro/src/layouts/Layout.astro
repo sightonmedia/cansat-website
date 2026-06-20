@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+import Starfield from '../components/Starfield.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  currentPage?: string;
+}
+const {
+  title,
+  description = 'The CanSat Design Challenge — Canadian secondary-school teams design, build and fly real science payloads.',
+  currentPage = '',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content={description}>
+  <title>{title} — CSDCMS</title>
+  <link rel="icon" href="https://www.csdcms.ca/Logos/CSDCMS_logo_200x200_on_black.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <Starfield />
+  <div style="position:relative;z-index:1;">
+    <Header currentPage={currentPage} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </div>
+
+  <script is:inline>
+    // Mobile nav
+    const nav = document.querySelector('.nav');
+    const toggle = document.querySelector('.nav__toggle');
+    if (nav && toggle) {
+      toggle.addEventListener('click', () => {
+        const open = nav.getAttribute('data-open') === 'true';
+        nav.setAttribute('data-open', String(!open));
+        toggle.setAttribute('aria-expanded', String(!open));
+      });
+      nav.querySelectorAll('.nav__link').forEach(link =>
+        link.addEventListener('click', () => {
+          nav.setAttribute('data-open', 'false');
+          toggle.setAttribute('aria-expanded', 'false');
+        })
+      );
+    }
+    // Reveal on scroll
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+    // Auto-update year in footer
+    const yr = document.getElementById('footer-year');
+    if (yr) yr.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

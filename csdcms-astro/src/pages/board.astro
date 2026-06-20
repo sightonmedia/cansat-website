@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BgPhoto from '../components/BgPhoto.astro';
+import { SPACE_PHOTOS } from '../lib/images';
+
+const crew = [
+  { name: 'Liliana Barrios',   role: 'Director',       photo: 'LB.jpg', bio: '15 years in the Canadian space industry, working on satellite missions and ISS robotics software. Alumna of the International Space University.' },
+  { name: 'Gary Hagel',        role: 'Director',       photo: 'GH.jpg', bio: 'Lawyer specialising in motor vehicle and insurance law, personal injury, and general litigation, with appearances at every level of court in British Columbia.' },
+  { name: 'Wendy Keyzer',      role: 'Director',       photo: 'WK.jpg', bio: 'Communications manager in the Canadian space industry, with a broad background in business development initiatives.' },
+  { name: 'Adnan Khan, P.Eng.', role: 'Director',      photo: 'AK.jpg', bio: 'Chief Operating Officer of an international mining company and an alumnus of the International Space University.' },
+  { name: 'Dr. Jaymie Matthews, OOC', role: 'Director', photo: 'JM.jpg', bio: 'Professor Emeritus of Astronomy at the University of British Columbia and Principal Investigator on Canada\'s MOST space telescope.' },
+  { name: 'Duncan Phillips',   role: 'Vice-President', photo: 'DP.jpg', bio: 'Manager of Industrial and Regional Benefits for Elomatic Consulting Inc., and previously a Vice-President of Mitacs.' },
+  { name: 'Dr. Lynda Phillips', role: 'Director',      photo: 'LP.jpg', bio: 'Educator and science outreach specialist with extensive experience connecting students to STEM pathways across Canada.' },
+  { name: 'Karen Pooni',       role: 'Treasurer',      photo: 'KP.jpg', bio: 'Finance professional with broad experience in non-profit financial management and governance across the technology and education sectors.' },
+  { name: 'Lawrence Reeves',   role: 'President',      photo: 'LR.jpg', bio: 'Founder and driving force behind the CanSat Design Challenge in Canada, with a background in aerospace education and student programme development.' },
+  { name: 'Kyle Richardson',   role: 'Director',       photo: 'KR.jpg', bio: 'Software engineer with experience in embedded systems and space-sector software, and a strong commitment to hands-on STEM education.' },
+  { name: 'Michael Unger',     role: 'Director',       photo: 'MU.jpg', bio: 'Business development professional working at the intersection of technology and education, with experience in programme management and strategic partnerships.' },
+];
+---
+<Layout title="Board of Directors" currentPage="/board" description="Meet the volunteer Board of Directors steering the CSDCMS CanSat Design Challenge.">
+
+  <!-- ── PAGE HEADER ───────────────────────────────────── -->
+  <section class="page-header s-nebula">
+    <BgPhoto src={SPACE_PHOTOS.andromeda} variant="header" objectPosition="center 40%" />
+    <div class="container reveal">
+      <div class="eyebrow">Flight Crew</div>
+      <h1>Board of Directors</h1>
+      <p>CSDCMS is steered by a volunteer board drawn from Canada's space industry, engineering, education, business and legal communities.</p>
+    </div>
+  </section>
+
+  <!-- ── CREW GRID ─────────────────────────────────────── -->
+  <section class="section s-deep">
+    <div class="container">
+      <div class="crew reveal">
+        {crew.map(m => (
+          <div class="crew-card">
+            <div class="crew-card__photo">
+              <img
+                src={`https://www.csdcms.ca/BoD/${m.photo}`}
+                alt={`Portrait of ${m.name}`}
+                loading="lazy"
+              >
+              <span class="crew-card__role">{m.role}</span>
+            </div>
+            <div class="crew-card__body">
+              <div class="crew-card__name">{m.name}</div>
+              <p class="crew-card__bio">{m.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────── -->
+  <section class="section--sm s-cosmos">
+    <div class="container" style="display:flex;gap:var(--sp-5);align-items:center;justify-content:space-between;flex-wrap:wrap;">
+      <div class="reveal">
+        <div class="eyebrow">Volunteer-run</div>
+        <p style="font-size:1rem;max-width:52ch;">CSDCMS is operated entirely by volunteers. If you're interested in joining the board or supporting the programme, get in touch.</p>
+      </div>
+      <a class="btn btn--ghost reveal" href="/contact">Contact us</a>
+    </div>
+  </section>
+
+</Layout>
