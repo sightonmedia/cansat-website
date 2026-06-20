@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+csdcms-astro/node_modules/
+
+# Astro build artifacts
+.astro/
+csdcms-astro/.astro/
+dist/
+csdcms-astro/dist/
+
+# Generated deploy output
+csdcms-built/
+
+# Legacy root-level static exports
+/index.html
+/contact.html
+
+# Local logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/

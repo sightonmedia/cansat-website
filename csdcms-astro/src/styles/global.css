@@ -14,11 +14,11 @@
   --horizon:   #112845;
 
   /* accents */
-  --signal:    #4ed8f0;
-  --signal-mid: #1a8fa8;
-  --signal-dim: rgba(78,216,240,.12);
-  --exhaust:   #f06030;
-  --exhaust-dark: #c44820;
+  --signal:    #59dff3;
+  --signal-mid: #2d9ad0;
+  --signal-dim: rgba(89,223,243,.12);
+  --exhaust:   #4f7bdc;
+  --exhaust-dark: #355dc4;
 
   /* text */
   --star:      #e8f2fc;
@@ -246,26 +246,7 @@ a:focus-visible {
 /* (grid background removed) */
 
 /* ── Eyebrow ────────────────────────────────────────────── */
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-2);
-  font-family: var(--f-mono);
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--signal);
-  margin-bottom: var(--sp-4);
-}
-.eyebrow::before {
-  content: '';
-  display: block;
-  width: 10px;
-  height: 10px;
-  background: var(--exhaust);
-  flex-shrink: 0;
-}
+.eyebrow { display: none; }
 
 /* ── Section header ─────────────────────────────────────── */
 .section-head { max-width: 52rem; margin-bottom: var(--sp-8); }
