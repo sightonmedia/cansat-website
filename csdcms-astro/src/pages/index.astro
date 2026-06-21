@@ -7,26 +7,34 @@ import { SPACE_PHOTOS, CANSAT_PHOTO, SUPPORTER_LOGOS } from '../lib/images';
 
   <!-- ── HERO ─────────────────────────────────────────── -->
   <section class="section hero s-void">
-    <BgPhoto src={SPACE_PHOTOS.blueMarble} variant="hero" objectPosition="65% 45%" />
-    <div class="container" style="display:contents;">
-      <div class="hero__content reveal" style="padding-inline:clamp(24px,5vw,64px);">
-        <div class="eyebrow">CanSat Design Challenge · 2025–26</div>
+    <div class="hero__bg" aria-hidden="true">
+      <BgPhoto src={SPACE_PHOTOS.blueMarble} variant="hero" objectPosition="65% 45%" />
+    </div>
+    <div class="hero__stage container">
+      <div class="hero__scene hero__scene--headline" aria-label="Design it. Build it. Launch it.">
         <h1 class="hero__headline">
-          Design it.<br>Build it.<br><em>Launch&nbsp;it.</em>
+          <span>Design it.</span>
+          <span>Build it.</span>
+          <em>Launch&nbsp;it.</em>
         </h1>
-        <p class="hero__desc">
-          Every year, Canadian high school teams design, build, and fly a real
-          atmospheric science payload the size of a soft-drink can. It descends
-          under a parachute the team made, and the data it collects is real.
-        </p>
-        <div class="hero__ctas">
-          <a class="btn btn--primary btn--lg" href="/challenge">Explore the Challenge</a>
-          <a class="btn btn--ghost btn--lg" href="/resources">View Resources</a>
-        </div>
       </div>
 
-      <!-- Orbital mechanics SVG -->
-      <div class="hero__visual">
+      <div class="hero__scene hero__scene--mission">
+        <div class="hero__content">
+          <div class="eyebrow">CanSat Design Challenge · 2025–26</div>
+          <p class="hero__desc">
+            Every year, Canadian high school teams design, build, and fly a real
+            atmospheric science payload the size of a soft-drink can. It descends
+            under a parachute the team made, and the data it collects is real.
+          </p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary btn--lg" href="/challenge">Explore the Challenge</a>
+            <a class="btn btn--ghost btn--lg" href="/resources">View Resources</a>
+          </div>
+        </div>
+
+        <!-- CanSat launch graphic -->
+        <div class="hero__visual" aria-hidden="true">
         <svg class="hero__svg" viewBox="0 0 560 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <!-- Radar rings from implied Earth below -->
           <circle cx="280" cy="680" r="440" fill="none" stroke="white" stroke-width="1" opacity=".035"/>
@@ -96,6 +104,7 @@ import { SPACE_PHOTOS, CANSAT_PHOTO, SUPPORTER_LOGOS } from '../lib/images';
           <path d="M 16 16 L 42 16 M 16 16 L 16 42" stroke="#59dff3" stroke-width="1" opacity=".22"/>
           <path d="M 544 444 L 518 444 M 544 444 L 544 418" stroke="#59dff3" stroke-width="1" opacity=".22"/>
         </svg>
+        </div>
       </div>
     </div>
   </section>
