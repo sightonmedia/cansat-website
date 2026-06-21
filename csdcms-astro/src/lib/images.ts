@@ -45,7 +45,7 @@ export const SUPPORTER_LOGOS = [
   { src: '/images/supporters/bchydro.svg',  alt: 'BC Hydro' },
   { src: '/images/supporters/calian.svg',   alt: 'Calian' },
   { src: '/images/supporters/mda-space.svg', alt: 'MDA Space' },
-  { src: '/images/supporters/trottier.webp', alt: 'Trottier Family Foundation' },
+  { src: '/images/supporters/trottier.png', alt: 'Trottier Family Foundation' },
   { src: '/images/supporters/telesat.svg',  alt: 'Telesat' },
   { src: '/images/supporters/css.png',      alt: 'Canadian Space Society' },
 ];
