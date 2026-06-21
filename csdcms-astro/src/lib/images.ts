@@ -42,10 +42,10 @@ export const PHOTO_CREDITS = [
 export const CANSAT_PHOTO = '/images/cansat-2022-winners.webp';
 
 export const SUPPORTER_LOGOS = [
-  { src: '/images/supporters/bchydro.jpg',  alt: 'BC Hydro' },
-  { src: '/images/supporters/calian.jpg',   alt: 'Calian' },
-  { src: '/images/supporters/mda-space.jpg', alt: 'MDA Space' },
-  { src: '/images/supporters/trottier.jpg', alt: 'Trottier Family Foundation' },
-  { src: '/images/supporters/telesat.jpg',  alt: 'Telesat' },
+  { src: '/images/supporters/bchydro.svg',  alt: 'BC Hydro' },
+  { src: '/images/supporters/calian.svg',   alt: 'Calian' },
+  { src: '/images/supporters/mda-space.svg', alt: 'MDA Space' },
+  { src: '/images/supporters/trottier.webp', alt: 'Trottier Family Foundation' },
+  { src: '/images/supporters/telesat.svg',  alt: 'Telesat' },
   { src: '/images/supporters/css.png',      alt: 'Canadian Space Society' },
 ];
