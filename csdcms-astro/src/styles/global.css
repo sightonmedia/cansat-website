@@ -519,6 +519,92 @@ a:focus-visible {
   50% { opacity: .85; transform: scale(1.04); }
 }
 
+/* ── Hero descent scenes: rocket → 1 km, drone → 120 m ──── */
+.hero-altitude-label {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  letter-spacing: .06em;
+}
+.hero-altitude-label--advanced { fill: #59dff3; opacity: .65; }
+.hero-altitude-label--beginner { fill: #4f7bdc; opacity: .6; }
+
+.hero-rocket__flame {
+  transform-origin: 0px 22px;
+  animation: heroFlameFlicker 1s ease-in-out infinite;
+}
+.hero-drone__rotor {
+  animation: heroRotorSpin .5s linear infinite;
+}
+.hero-parachute,
+.hero-landing {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.hero-landing { opacity: 0; }
+
+.hero-fall--rocket {
+  animation: heroDropRocket 7s cubic-bezier(.33,.1,.6,1) infinite;
+}
+.hero-fall--rocket .hero-parachute {
+  animation: heroChuteRocket 7s cubic-bezier(.33,.1,.6,1) infinite;
+}
+.hero-landing--rocket {
+  animation: heroLandPulse 7s ease-out infinite;
+}
+.hero-fall--drone {
+  animation: heroDropDrone 5s cubic-bezier(.33,.1,.6,1) infinite;
+  animation-delay: 1.4s;
+}
+.hero-fall--drone .hero-parachute {
+  animation: heroChuteDrone 5s cubic-bezier(.33,.1,.6,1) infinite;
+  animation-delay: 1.4s;
+}
+.hero-landing--drone {
+  animation: heroLandPulse 5s ease-out infinite;
+  animation-delay: 1.4s;
+}
+
+@keyframes heroFlameFlicker {
+  0%, 100% { transform: scaleY(1) scaleX(1); opacity: .85; }
+  50% { transform: scaleY(1.25) scaleX(.85); opacity: 1; }
+}
+@keyframes heroRotorSpin {
+  to { transform: rotate(360deg); }
+}
+@keyframes heroDropRocket {
+  0%   { transform: translateY(0); opacity: 0; }
+  6%   { opacity: 1; }
+  8%   { transform: translateY(0); }
+  80%  { transform: translateY(278px); opacity: 1; }
+  92%  { opacity: 0; }
+  100% { transform: translateY(278px); opacity: 0; }
+}
+@keyframes heroDropDrone {
+  0%   { transform: translateY(0); opacity: 0; }
+  8%   { opacity: 1; }
+  10%  { transform: translateY(0); }
+  80%  { transform: translateY(166px); opacity: 1; }
+  92%  { opacity: 0; }
+  100% { transform: translateY(166px); opacity: 0; }
+}
+@keyframes heroChuteRocket {
+  0%, 28%  { opacity: 0; transform: scale(.4); }
+  40%      { opacity: 1; transform: scale(1); }
+  80%      { opacity: 1; transform: scale(1); }
+  90%,100% { opacity: 0; transform: scale(1); }
+}
+@keyframes heroChuteDrone {
+  0%, 24%  { opacity: 0; transform: scale(.4); }
+  38%      { opacity: 1; transform: scale(1); }
+  80%      { opacity: 1; transform: scale(1); }
+  90%,100% { opacity: 0; transform: scale(1); }
+}
+@keyframes heroLandPulse {
+  0%, 76%  { opacity: 0; transform: scale(.6); }
+  80%      { opacity: .5; transform: scale(1); }
+  90%,100% { opacity: 0; transform: scale(1.4); }
+}
+
 /* ── Page header (inner pages) ──────────────────────────── */
 .page-header {
   padding-block: clamp(72px,11vw,128px) clamp(56px,8vw,96px);
@@ -553,6 +639,13 @@ a:focus-visible {
 .cat-card--beginner::before { border-color: var(--exhaust); }
 .cat-card--advanced::before { border-color: var(--signal); }
 .cat-card:hover { border-color: var(--line-bright); }
+.cat-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+.cardicon { width: 92px; height: 92px; flex-shrink: 0; }
 .cat-card__tag {
   font-family: var(--f-mono);
   font-size: .68rem;
@@ -583,6 +676,77 @@ a:focus-visible {
     linear-gradient(90deg, var(--signal) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
+}
+
+/* ── Category card mini drop animations ─────────────────── */
+.cardicon-flame {
+  transform-origin: 60px 58px;
+  animation: heroFlameFlicker 1s ease-in-out infinite;
+}
+.cardicon-rotor {
+  animation: heroRotorSpin .5s linear infinite;
+}
+.cardicon-parachute,
+.cardicon-landing {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.cardicon-landing { opacity: 0; }
+
+.cardicon-fall--rocket {
+  animation: cardDropRocket 4.5s cubic-bezier(.33,.1,.6,1) infinite;
+}
+.cardicon-fall--rocket .cardicon-parachute {
+  animation: cardChuteRocket 4.5s cubic-bezier(.33,.1,.6,1) infinite;
+}
+.cardicon-landing--rocket {
+  animation: cardLandPulse 4.5s ease-out infinite;
+}
+.cardicon-fall--drone {
+  animation: cardDropDrone 3.4s cubic-bezier(.33,.1,.6,1) infinite;
+  animation-delay: .9s;
+}
+.cardicon-fall--drone .cardicon-parachute {
+  animation: cardChuteDrone 3.4s cubic-bezier(.33,.1,.6,1) infinite;
+  animation-delay: .9s;
+}
+.cardicon-landing--drone {
+  animation: cardLandPulse 3.4s ease-out infinite;
+  animation-delay: .9s;
+}
+
+@keyframes cardDropRocket {
+  0%   { transform: translateY(-46px); opacity: 0; }
+  8%   { opacity: 1; }
+  10%  { transform: translateY(-46px); }
+  78%  { transform: translateY(0); opacity: 1; }
+  92%  { opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+@keyframes cardDropDrone {
+  0%   { transform: translateY(-28px); opacity: 0; }
+  10%  { opacity: 1; }
+  12%  { transform: translateY(-28px); }
+  78%  { transform: translateY(0); opacity: 1; }
+  92%  { opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+@keyframes cardChuteRocket {
+  0%, 34%  { opacity: 0; transform: scale(.4); }
+  46%      { opacity: 1; transform: scale(1); }
+  88%      { opacity: 1; transform: scale(1); }
+  96%,100% { opacity: 0; transform: scale(1); }
+}
+@keyframes cardChuteDrone {
+  0%, 30%  { opacity: 0; transform: scale(.4); }
+  42%      { opacity: 1; transform: scale(1); }
+  88%      { opacity: 1; transform: scale(1); }
+  96%,100% { opacity: 0; transform: scale(1); }
+}
+@keyframes cardLandPulse {
+  0%, 76%  { opacity: 0; transform: scale(.6); }
+  80%      { opacity: .55; transform: scale(1); }
+  92%,100% { opacity: 0; transform: scale(1.3); }
 }
 
 /* ── Spec list ──────────────────────────────────────────── */
@@ -1129,4 +1293,5 @@ a:focus-visible {
   .hero__ctas .btn { justify-content: center; }
   .timeline::before { left: 36px; }
   .timeline__row { grid-template-columns: 72px 1fr; gap: var(--sp-4); }
+  .cardicon { width: 68px; height: 68px; }
 }
