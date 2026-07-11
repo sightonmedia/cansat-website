@@ -28,9 +28,8 @@ const tutorials = [
   <section class="page-header s-nebula">
     <BgPhoto src={SPACE_PHOTOS.rocketLaunch} variant="header" objectPosition="center 25%" />
     <div class="container reveal">
-      <div class="eyebrow">Mission Files</div>
       <h1>Resources</h1>
-      <p>The full tutorial video series, PDF notes, and the rules &amp; requirements document. Everything from first boot to launch day.</p>
+      <p>The full tutorial video series, PDF notes, and the rules &amp; requirements document — everything from first boot to launch day.</p>
     </div>
   </section>
 
@@ -38,17 +37,16 @@ const tutorials = [
   <section class="section s-deep">
     <div class="container">
       <div class="section-head reveal">
-        <div class="eyebrow">Build series</div>
         <h2>Tutorial video series</h2>
         <p>
-          Twelve chapters walking you through the full Beginner build, from first Arduino sketch to parachute sizing.
-          The full playlist is on <a href="https://www.youtube.com/@CSDCMS" target="_blank" rel="noopener" style="color:var(--signal);text-decoration:underline;">youtube.com/@CSDCMS</a>.
+          Twelve chapters covering the full Beginner build, from first Arduino sketch to parachute sizing.
+          The complete playlist lives at <a href="https://www.youtube.com/@CSDCMS" target="_blank" rel="noopener" style="color:var(--signal);text-decoration:underline;">youtube.com/@CSDCMS</a>.
         </p>
       </div>
 
-      <div class="video-grid reveal">
+      <div class="video-grid">
         {tutorials.map(t => (
-          <div class="video-card">
+          <div class="video-card reveal">
             {t.videoId ? (
               <div class="video-card__embed">
                 <iframe
@@ -62,7 +60,7 @@ const tutorials = [
             ) : (
               <div class="video-card__pdf-only">
                 <span class="pdf-icon">📄</span>
-                <span style="font-family:var(--f-mono);font-size:.72rem;color:var(--star-dim);letter-spacing:.06em;">PDF ONLY</span>
+                <span class="pdf-label">PDF ONLY</span>
               </div>
             )}
             <div class="video-card__body">
@@ -105,7 +103,6 @@ const tutorials = [
   <section class="section s-cosmos">
     <div class="container">
       <div class="section-head reveal">
-        <div class="eyebrow">Read before you build</div>
         <h2>Rules &amp; Requirements</h2>
         <p>The requirements document covers the science mission, build constraints, size and mass limits, documentation requirements, and judging criteria for both categories.</p>
       </div>
@@ -116,10 +113,9 @@ const tutorials = [
           loading="lazy"
         >
         <div>
-          <div class="eyebrow" style="margin-bottom:var(--sp-3);">Current document</div>
           <h3>2024–25 Rules &amp; Requirements</h3>
-          <p>The 2025–26 edition is still being finalised. The requirements won't change much from last season. In the meantime, this document—English only—covers the full science mission spec, payload constraints, RF link requirements for Advanced teams, and scoring.</p>
-          <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap;margin-top:var(--sp-5);">
+          <p>The 2025–26 edition is still being finalised, and the requirements won't change much from last season. In the meantime this document (English only) covers the full science mission spec, payload constraints, RF link requirements for Advanced teams, and scoring.</p>
+          <div class="cta-row">
             <a
               class="btn btn--primary"
               href="https://www.csdcms.ca/Docs/CSDC_CanSat_Requirements_2024-25.pdf"
@@ -132,27 +128,24 @@ const tutorials = [
     </div>
   </section>
 
-  <!-- ── LINKS ─────────────────────────────────────────── -->
+  <!-- ── MORE LINKS ────────────────────────────────────── -->
   <section class="section--sm s-nebula">
     <div class="container">
-      <div class="grid-3 reveal">
-        <div class="card">
-          <div class="eyebrow" style="margin-bottom:var(--sp-3);">YouTube</div>
-          <h3 style="margin-bottom:var(--sp-3);">Full playlist</h3>
-          <p style="font-size:.9rem;margin-bottom:var(--sp-4);">All tutorial videos, in order, plus occasional extras on the CSDCMS channel.</p>
-          <a class="btn btn--signal" href="https://www.youtube.com/@CSDCMS" target="_blank" rel="noopener">Open channel</a>
+      <div class="links-strip reveal">
+        <div class="links-strip__item">
+          <h3>Full playlist</h3>
+          <p>All tutorial videos in order, plus occasional extras, on the CSDCMS channel.</p>
+          <a class="text-link" href="https://www.youtube.com/@CSDCMS" target="_blank" rel="noopener">Open YouTube channel →</a>
         </div>
-        <div class="card">
-          <div class="eyebrow" style="margin-bottom:var(--sp-3);">The Challenge</div>
-          <h3 style="margin-bottom:var(--sp-3);">Mission details</h3>
-          <p style="font-size:.9rem;margin-bottom:var(--sp-4);">Full breakdown of the science mission, both categories, past secondary experiments, and season timeline.</p>
-          <a class="btn btn--ghost" href="/challenge">Read the brief</a>
+        <div class="links-strip__item">
+          <h3>Mission details</h3>
+          <p>The science mission, both categories, past secondary experiments, and the season timeline.</p>
+          <a class="text-link" href="/challenge">Read the challenge brief →</a>
         </div>
-        <div class="card">
-          <div class="eyebrow" style="margin-bottom:var(--sp-3);">Support</div>
-          <h3 style="margin-bottom:var(--sp-3);">Can't find what you need?</h3>
-          <p style="font-size:.9rem;margin-bottom:var(--sp-4);">A real person reads every message. If a tutorial doesn't cover something or a PDF link is broken, let us know.</p>
-          <a class="btn btn--ghost" href="/contact">Get in touch</a>
+        <div class="links-strip__item">
+          <h3>Missing something?</h3>
+          <p>If a tutorial doesn't cover what you need or a PDF link is broken, tell us and we'll fix it.</p>
+          <a class="text-link" href="/contact">Get in touch →</a>
         </div>
       </div>
     </div>

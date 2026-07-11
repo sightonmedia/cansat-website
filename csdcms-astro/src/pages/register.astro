@@ -9,7 +9,6 @@ import { SPACE_PHOTOS } from '../lib/images';
   <section class="page-header s-nebula">
     <BgPhoto src={SPACE_PHOTOS.aurora} variant="header" objectPosition="center 60%" />
     <div class="container reveal">
-      <div class="eyebrow">Join the Mission · 2025–26</div>
       <h1>Register</h1>
       <p>Registration connects your school to the full CanSat programme, from kit delivery to launch day.</p>
     </div>
@@ -19,35 +18,34 @@ import { SPACE_PHOTOS } from '../lib/images';
   <section class="section s-deep">
     <div class="container">
       <div class="status-panel reveal">
-        <div class="status-led"></div>
+        <span class="tag tag--closed">Closed</span>
         <div class="status-panel__text">
-          <h3>Registration is currently closed</h3>
-          <p>The 2025–26 registration window has closed. Late registration is sometimes possible—get in touch and we'll see what we can do.</p>
+          <h3>Registration for 2025–26 has closed</h3>
+          <p>Late registration is sometimes possible — get in touch and we'll see what we can do.</p>
         </div>
       </div>
 
       <div class="section-head reveal">
-        <div class="eyebrow">What registration involves</div>
-        <h2>The process</h2>
-        <p>Registration is simple. We keep the paperwork short so you can get to building.</p>
+        <h2>How it works</h2>
+        <p>We keep the paperwork short so you can get to building.</p>
       </div>
-      <div class="reg-steps reveal">
-        <div class="reg-step reg-step--active">
+      <div class="reg-steps">
+        <div class="reg-step reg-step--active reveal">
           <div class="reg-step__num">01 —</div>
           <h4>Submit your team</h4>
           <p>Tell us your school name, your supervising teacher, an estimated team size, and your chosen category (Beginner or Advanced).</p>
         </div>
-        <div class="reg-step">
+        <div class="reg-step reveal">
           <div class="reg-step__num">02 —</div>
           <h4>Receive confirmation</h4>
           <p>We confirm your spot. Beginner teams get kit delivery sorted; Advanced teams receive the requirements document and their preliminary design brief.</p>
         </div>
-        <div class="reg-step">
+        <div class="reg-step reveal">
           <div class="reg-step__num">03 —</div>
           <h4>Build season begins</h4>
           <p>Work through the tutorial series, build your CanSat, iterate on your secondary experiment, and design the parachute system. The build season runs November through March.</p>
         </div>
-        <div class="reg-step">
+        <div class="reg-step reveal">
           <div class="reg-step__num">04 —</div>
           <h4>Launch day</h4>
           <p>Come to your launch campaign. Beginner teams go to a regional site; Advanced teams travel to Lethbridge, Alberta. Fly, recover, analyse, present.</p>
@@ -60,28 +58,28 @@ import { SPACE_PHOTOS } from '../lib/images';
   <section class="section s-cosmos">
     <div class="container">
       <div class="section-head reveal">
-        <div class="eyebrow">Not sure which to choose?</div>
-        <h2>Beginner vs. Advanced</h2>
+        <h2>Beginner or Advanced?</h2>
+        <p>Both are worth a season of your time. Pick the one that matches where your team is now.</p>
       </div>
-      <div class="grid-2 reveal">
-        <div class="card">
-          <div class="eyebrow" style="margin-bottom:var(--sp-3);">Beginner</div>
-          <h3 style="margin-bottom:var(--sp-4);">Good starting point if…</h3>
-          <ul style="display:flex;flex-direction:column;gap:var(--sp-3);">
-            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--exhaust);">Your team has little or no electronics experience</li>
-            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--exhaust);">You want a guided introduction to embedded systems, with a kit to start from</li>
-            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--exhaust);">Your school can't fund travel to Lethbridge</li>
-            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--exhaust);">This is your team's first year in the Challenge</li>
+      <div class="compare reveal">
+        <div class="compare__col compare__col--beginner">
+          <span class="tag tag--exhaust">Beginner</span>
+          <h3>A good starting point if…</h3>
+          <ul>
+            <li>Your team has little or no electronics experience</li>
+            <li>You want a guided introduction to embedded systems, with a kit to start from</li>
+            <li>Your school can't fund travel to Lethbridge</li>
+            <li>This is your team's first year in the Challenge</li>
           </ul>
         </div>
-        <div class="card">
-          <div class="eyebrow" style="margin-bottom:var(--sp-3);">Advanced</div>
-          <h3 style="margin-bottom:var(--sp-4);">Good fit if…</h3>
-          <ul style="display:flex;flex-direction:column;gap:var(--sp-3);">
-            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--signal);">Your team has electronics / programming experience</li>
-            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--signal);">You want to design your own PCB from scratch</li>
-            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--signal);">You want to compete at the national level</li>
-            <li style="font-size:.95rem;color:var(--star-soft);padding-left:var(--sp-4);border-left:2px solid var(--signal);">You want a shot at representing Canada at the ESA competition</li>
+        <div class="compare__col compare__col--advanced">
+          <span class="tag tag--signal">Advanced</span>
+          <h3>A good fit if…</h3>
+          <ul>
+            <li>Your team has electronics and programming experience</li>
+            <li>You want to design your own PCB from scratch</li>
+            <li>You want to compete at the national level</li>
+            <li>You want a shot at representing Canada at the ESA competition</li>
           </ul>
         </div>
       </div>
@@ -90,12 +88,11 @@ import { SPACE_PHOTOS } from '../lib/images';
 
   <!-- ── CTA ───────────────────────────────────────────── -->
   <section class="section s-nebula">
-    <div class="container" style="text-align:center;">
-      <div class="reveal" style="max-width:600px;margin-inline:auto;">
-        <div class="eyebrow" style="justify-content:center;">Get in touch</div>
-        <h2 style="margin-bottom:var(--sp-4);">Questions before you register?</h2>
-        <p style="margin-inline:auto;font-size:1.05rem;">Questions about the categories, eligibility, or what a launch day looks like? Reach out. We're a small team and we answer every message.</p>
-        <div style="margin-top:var(--sp-6);display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap;">
+    <div class="container">
+      <div class="center-col reveal">
+        <h2 class="mb-4">Questions before you register?</h2>
+        <p class="lead">Categories, eligibility, what a launch day actually looks like — ask us. We're a small team and we answer every message.</p>
+        <div class="cta-row cta-row--center mt-6">
           <a class="btn btn--primary btn--lg" href="/contact">Contact us</a>
           <a class="btn btn--ghost" href="/challenge">Read the full brief</a>
         </div>

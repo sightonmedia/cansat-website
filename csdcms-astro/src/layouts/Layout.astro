@@ -26,6 +26,7 @@ const {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap">
+  <script is:inline>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -55,49 +56,106 @@ const {
         })
       );
     }
-    // Reveal on scroll
-    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+
+    const motionOK = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+
+    // Reveal on scroll, with a short stagger for elements that appear together
+    if (motionOK) {
       const io = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
-      }, { threshold: 0.1 });
+        const showing = entries.filter(e => e.isIntersecting);
+        showing.forEach((e, i) => {
+          e.target.style.transitionDelay = `${Math.min(i * 90, 360)}ms`;
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     } else {
       document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
     }
-    // Home hero scroll scene
-    const heroes = Array.from(document.querySelectorAll('.hero'));
-    if (heroes.length) {
-      let ticking = false;
-      const clamp = value => Math.min(1, Math.max(0, value));
-      const smoothstep = (start, end, value) => {
-        const t = clamp((value - start) / (end - start));
+
+    // Pointer-tracked glow on cards (single delegated listener)
+    if (window.matchMedia('(hover: hover)').matches) {
+      document.addEventListener('pointermove', (e) => {
+        const card = e.target.closest?.('.card, .cat-card, .video-card, .crew-card');
+        if (!card) return;
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--my', `${e.clientY - r.top}px`);
+      }, { passive: true });
+    }
+
+    // Scroll-driven scenes: hero story + homepage flight path.
+    // Targets are computed on scroll; displayed values ease toward them in a
+    // shared rAF loop so motion stays fluid even with choppy wheel input.
+    const hero = document.querySelector('.hero');
+    const flightpath = document.querySelector('.flightpath');
+    if (motionOK && (hero || flightpath)) {
+      const clamp = v => Math.min(1, Math.max(0, v));
+      const smoothstep = (a, b, v) => {
+        const t = clamp((v - a) / (b - a));
         return t * t * (3 - 2 * t);
       };
-      const updateHeroProgress = () => {
-        heroes.forEach(hero => {
+
+      let heroTarget = 0, heroCurrent = 0;
+      let fpTarget = 0, fpCurrent = 0;
+      let rafId = 0;
+
+      const missionEl = hero && hero.querySelector('.hero__scene--mission');
+
+      const computeTargets = () => {
+        if (hero) {
           const rect = hero.getBoundingClientRect();
           const range = Math.max(1, rect.height - window.innerHeight);
-          const progress = Math.min(1, Math.max(0, -rect.top / range));
-          const missionEl = hero.querySelector('.hero__scene--mission');
-          const headlineExit = smoothstep(0.18, 0.50, progress);
-          const missionEnter = smoothstep(0.48, 0.82, progress);
-          hero.style.setProperty('--hero-progress', progress.toFixed(4));
-          hero.style.setProperty('--hero-headline-exit', headlineExit.toFixed(4));
-          hero.style.setProperty('--hero-mission-enter', missionEnter.toFixed(4));
-          if (missionEl) missionEl.style.pointerEvents = missionEnter > 0.6 ? 'auto' : 'none';
-        });
-        ticking = false;
-      };
-      const requestHeroUpdate = () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateHeroProgress);
-          ticking = true;
+          heroTarget = clamp(-rect.top / range);
+        }
+        if (flightpath) {
+          const rect = flightpath.getBoundingClientRect();
+          fpTarget = clamp((window.innerHeight * 0.55 - rect.top) / Math.max(1, rect.height));
         }
       };
-      updateHeroProgress();
-      window.addEventListener('scroll', requestHeroUpdate, { passive: true });
-      window.addEventListener('resize', requestHeroUpdate);
+
+      const applyHero = (p) => {
+        const headlineExit = smoothstep(0.15, 0.45, p);
+        const missionEnter = smoothstep(0.42, 0.78, p);
+        hero.style.setProperty('--hero-headline-exit', headlineExit.toFixed(4));
+        hero.style.setProperty('--hero-mission-enter', missionEnter.toFixed(4));
+        if (missionEl) missionEl.style.pointerEvents = missionEnter > 0.6 ? 'auto' : 'none';
+      };
+
+      const tick = () => {
+        let settled = true;
+        if (hero) {
+          heroCurrent += (heroTarget - heroCurrent) * 0.14;
+          if (Math.abs(heroTarget - heroCurrent) < 0.0008) heroCurrent = heroTarget;
+          else settled = false;
+          applyHero(heroCurrent);
+        }
+        if (flightpath) {
+          fpCurrent += (fpTarget - fpCurrent) * 0.14;
+          if (Math.abs(fpTarget - fpCurrent) < 0.0008) fpCurrent = fpTarget;
+          else settled = false;
+          flightpath.style.setProperty('--fp-progress', fpCurrent.toFixed(4));
+        }
+        rafId = settled ? 0 : requestAnimationFrame(tick);
+      };
+
+      const wake = () => {
+        computeTargets();
+        if (!rafId) rafId = requestAnimationFrame(tick);
+      };
+
+      // start in sync with current scroll position (no jump on reload mid-page)
+      computeTargets();
+      heroCurrent = heroTarget;
+      fpCurrent = fpTarget;
+      if (hero) applyHero(heroCurrent);
+      if (flightpath) flightpath.style.setProperty('--fp-progress', fpCurrent.toFixed(4));
+
+      window.addEventListener('scroll', wake, { passive: true });
+      window.addEventListener('resize', wake);
     }
+
     // Auto-update year in footer
     const yr = document.getElementById('footer-year');
     if (yr) yr.textContent = new Date().getFullYear();

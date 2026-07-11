@@ -23,7 +23,6 @@ const crew = [
   <section class="page-header s-nebula">
     <BgPhoto src={SPACE_PHOTOS.andromeda} variant="header" objectPosition="center 40%" />
     <div class="container reveal">
-      <div class="eyebrow">Flight Crew</div>
       <h1>Board of Directors</h1>
       <p>CSDCMS is run by a volunteer board with backgrounds across Canada's space industry, engineering, education, business, and law.</p>
     </div>
@@ -32,9 +31,9 @@ const crew = [
   <!-- ── CREW GRID ─────────────────────────────────────── -->
   <section class="section s-deep">
     <div class="container">
-      <div class="crew reveal">
+      <div class="crew">
         {crew.map(m => (
-          <div class="crew-card">
+          <div class="crew-card reveal">
             <div class="crew-card__photo">
               <img
                 src={`https://www.csdcms.ca/BoD/${m.photo}`}
@@ -55,11 +54,8 @@ const crew = [
 
   <!-- ── CTA ───────────────────────────────────────────── -->
   <section class="section--sm s-cosmos">
-    <div class="container" style="display:flex;gap:var(--sp-5);align-items:center;justify-content:space-between;flex-wrap:wrap;">
-      <div class="reveal">
-        <div class="eyebrow">Volunteer-run</div>
-        <p style="font-size:1rem;max-width:52ch;">CSDCMS runs entirely on volunteer time. If you want to join the board or help out, reach out.</p>
-      </div>
+    <div class="container split-row">
+      <p class="reveal" style="max-width:52ch;">CSDCMS runs entirely on volunteer time. If you'd like to join the board or help out on a launch day, reach out.</p>
       <a class="btn btn--ghost reveal" href="/contact">Contact us</a>
     </div>
   </section>

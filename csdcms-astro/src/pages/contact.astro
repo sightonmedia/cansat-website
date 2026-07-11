@@ -2,6 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import BgPhoto from '../components/BgPhoto.astro';
 import { SPACE_PHOTOS, SUPPORTER_LOGOS } from '../lib/images';
+
+const reasons = [
+  { title: 'Registration & eligibility', desc: 'Wondering if your school qualifies, or whether late registration is possible — ask directly.' },
+  { title: 'Sponsorship & partnership', desc: 'If your organisation supports student STEM programmes, we’d like to hear from you.' },
+  { title: 'Media & press', desc: 'Covering student-built satellites in Canada? We can connect you with teams and board members.' },
+  { title: 'Volunteering', desc: 'Judges, mentors, and launch-day crew keep the Challenge flying — let us know if you’d like to help.' },
+];
 ---
 <Layout title="Contact" currentPage="/contact" description="Get in touch with CSDCMS — registration, sponsorship, media and volunteering enquiries.">
 
@@ -9,24 +16,19 @@ import { SPACE_PHOTOS, SUPPORTER_LOGOS } from '../lib/images';
   <section class="page-header s-nebula">
     <BgPhoto src={SPACE_PHOTOS.starTexture} variant="header" objectPosition="center" />
     <div class="container reveal">
-      <div class="eyebrow">Ground Control</div>
       <h1>Contact Us</h1>
-      <p>We're a small volunteer team. A real person reads every message — usually within a few business days, a little longer during launch season.</p>
+      <p>We're a small volunteer team, so replies usually take a few business days — a little longer during launch season.</p>
     </div>
   </section>
 
   <!-- ── CONTACT ───────────────────────────────────────── -->
   <section class="section s-deep">
     <div class="container">
-      <div class="contact-layout reveal">
+      <div class="contact-layout">
 
-        <div class="card">
-          <div class="eyebrow" style="margin-bottom:var(--sp-3);">Program contact</div>
+        <div class="card reveal">
+          <span class="tag tag--signal mb-4">Program contact</span>
           <h2 class="contact-name">Lawrence Reeves</h2>
-          <p class="contact-channel">
-            <span class="contact-channel__led" aria-label="Channel open"></span>
-            Channel open — replies within a few business days
-          </p>
           <div class="contact-fields">
             <div class="contact-field">
               <span class="label">Email</span>
@@ -37,42 +39,22 @@ import { SPACE_PHOTOS, SUPPORTER_LOGOS } from '../lib/images';
               <a href="tel:+17789886343">+1 778-988-6343</a>
             </div>
           </div>
-          <p class="contact-note">CSDCMS runs entirely on volunteer time. If a reply takes longer than expected during launch season, we'll always get back to you.</p>
+          <p class="contact-note">If a reply takes longer than expected during launch season, don't worry — we'll always get back to you.</p>
         </div>
 
-        <div class="card">
-          <div class="eyebrow" style="margin-bottom:var(--sp-3);">What to write about</div>
-          <h3 style="font-size:1.1rem;text-transform:none;letter-spacing:0;margin-bottom:var(--sp-3);">Common reasons teams get in touch</h3>
-          <div class="reach">
-            <div class="reach__row">
-              <span class="reach__num">01</span>
-              <div>
-                <h4>Registration &amp; eligibility</h4>
-                <p>Wondering if your school qualifies, or whether late registration is possible — ask directly.</p>
-              </div>
-            </div>
-            <div class="reach__row">
-              <span class="reach__num">02</span>
-              <div>
-                <h4>Sponsorship &amp; partnership</h4>
-                <p>If your organisation supports student STEM programmes, we'd like to hear from you.</p>
-              </div>
-            </div>
-            <div class="reach__row">
-              <span class="reach__num">03</span>
-              <div>
-                <h4>Media &amp; press</h4>
-                <p>Covering student-built satellites in Canada? We can connect you with teams and board members.</p>
-              </div>
-            </div>
-            <div class="reach__row">
-              <span class="reach__num">04</span>
-              <div>
-                <h4>Volunteering</h4>
-                <p>Judges, mentors, and launch-day crew help keep the Challenge flying — let us know if you'd like to help.</p>
-              </div>
-            </div>
-          </div>
+        <div class="card reveal">
+          <h3 style="font-size:1.1rem;" class="mb-3">Common reasons to get in touch</h3>
+          <ul class="numbered-list">
+            {reasons.map((r, i) => (
+              <li>
+                <span class="num">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <h4>{r.title}</h4>
+                  <p>{r.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
 
       </div>
@@ -83,7 +65,6 @@ import { SPACE_PHOTOS, SUPPORTER_LOGOS } from '../lib/images';
   <section class="section s-cosmos">
     <div class="container">
       <div class="section-head reveal">
-        <div class="eyebrow">With thanks</div>
         <h2>Mission partners</h2>
         <p>The CSDCMS thanks the following organisations for their support.</p>
       </div>
