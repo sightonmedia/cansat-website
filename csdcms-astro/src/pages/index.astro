@@ -41,28 +41,19 @@ import { SPACE_PHOTOS, CANSAT_PHOTO, SUPPORTER_LOGOS } from '../lib/images';
           <circle cx="280" cy="680" r="580" fill="none" stroke="white" stroke-width="1" opacity=".022"/>
           <circle cx="280" cy="680" r="700" fill="none" stroke="white" stroke-width="1" opacity=".014"/>
 
-          <!-- Inner (beginner) orbit arc -->
-          <path d="M 60 430 Q 130 210 280 175 Q 430 210 500 430"
-            fill="none" stroke="#4f7bdc" stroke-width="1" stroke-dasharray="5 9" opacity=".35"/>
-
-          <!-- Outer (advanced) orbit arc -->
-          <path d="M -20 440 Q 60 80 280 38 Q 500 80 580 440"
-            fill="none" stroke="#59dff3" stroke-width="1.2" stroke-dasharray="7 11" opacity=".42"/>
-
-          <!-- Trajectory trail (already flown) -->
-          <path d="M 280 38 Q 160 70 80 190"
-            fill="none" stroke="#4ed8f0" stroke-width="1.5" stroke-dasharray="2 7" opacity=".55"/>
-
-          <!-- ── ADVANCED: rocket launch to 1 km, dropping a CanSat ── -->
+          <!-- ── ADVANCED: rocket climbs to apogee, releases a CanSat, falls away ── -->
           <g class="hero-rocket" transform="translate(330,52)">
-            <path d="M0,-26 C5,-18 8,-8 8,0 L-8,0 C-8,-8 -5,-18 0,-26 Z" fill="#cfe9f5" stroke="#59dff3" stroke-width="1"/>
-            <rect x="-8" y="0" width="16" height="22" fill="#0d1e38" stroke="#59dff3" stroke-width="1.2"/>
-            <circle cx="0" cy="9" r="3.4" fill="#59dff3" opacity=".5"/>
-            <path d="M-8,14 L-19,27 L-8,22 Z" fill="#4ed8f0" opacity=".85"/>
-            <path d="M8,14 L19,27 L8,22 Z" fill="#4ed8f0" opacity=".85"/>
-            <path class="hero-rocket__flame" d="M-5,22 Q0,35 0,42 Q0,35 5,22 Z" fill="#f06030" opacity=".85"/>
+            <g class="hero-rocket__flight">
+              <path d="M0,-26 C5,-18 8,-8 8,0 L-8,0 C-8,-8 -5,-18 0,-26 Z" fill="#cfe9f5" stroke="#59dff3" stroke-width="1"/>
+              <rect x="-8" y="0" width="16" height="22" fill="#0d1e38" stroke="#59dff3" stroke-width="1.2"/>
+              <circle cx="0" cy="9" r="3.4" fill="#59dff3" opacity=".5"/>
+              <path d="M-8,14 L-19,27 L-8,22 Z" fill="#4ed8f0" opacity=".85"/>
+              <path d="M8,14 L19,27 L8,22 Z" fill="#4ed8f0" opacity=".85"/>
+              <g class="hero-rocket__flamewrap">
+                <path class="hero-rocket__flame" d="M-5,22 Q0,35 0,42 Q0,35 5,22 Z" fill="#f06030" opacity=".85"/>
+              </g>
+            </g>
           </g>
-          <text x="352" y="34" class="hero-altitude-label hero-altitude-label--advanced">1 KM · ROCKET</text>
 
           <g class="hero-fall hero-fall--rocket">
             <g class="hero-sway">
@@ -79,20 +70,21 @@ import { SPACE_PHOTOS, CANSAT_PHOTO, SUPPORTER_LOGOS } from '../lib/images';
           </g>
           <ellipse class="hero-landing hero-landing--rocket" cx="330" cy="404" rx="15" ry="4" fill="#59dff3"/>
 
-          <!-- ── BEGINNER: drone hover at 120 m, dropping a CanSat ── -->
+          <!-- ── BEGINNER: drone hovers at 120 m, releases a CanSat ── -->
           <g class="hero-drone" transform="translate(160,176)">
-            <rect x="-10" y="-5" width="20" height="10" rx="3" fill="#0d1e38" stroke="#4f7bdc" stroke-width="1.2"/>
-            <circle cx="0" cy="0" r="2" fill="#4f7bdc" opacity=".6"/>
-            <line x1="-10" y1="-3" x2="-27" y2="-17" stroke="#4f7bdc" stroke-width="1.4"/>
-            <line x1="10" y1="-3" x2="27" y2="-17" stroke="#4f7bdc" stroke-width="1.4"/>
-            <line x1="-10" y1="3" x2="-27" y2="17" stroke="#4f7bdc" stroke-width="1.4"/>
-            <line x1="10" y1="3" x2="27" y2="17" stroke="#4f7bdc" stroke-width="1.4"/>
-            <g class="hero-drone__rotor" style="transform-origin:-27px -17px;"><circle cx="-27" cy="-17" r="7" fill="none" stroke="#59dff3" stroke-width="1" opacity=".55"/><line x1="-27" y1="-24" x2="-27" y2="-10" stroke="#59dff3" stroke-width="1" opacity=".8"/></g>
-            <g class="hero-drone__rotor" style="transform-origin:27px -17px;"><circle cx="27" cy="-17" r="7" fill="none" stroke="#59dff3" stroke-width="1" opacity=".55"/><line x1="27" y1="-24" x2="27" y2="-10" stroke="#59dff3" stroke-width="1" opacity=".8"/></g>
-            <g class="hero-drone__rotor" style="transform-origin:-27px 17px;"><circle cx="-27" cy="17" r="7" fill="none" stroke="#59dff3" stroke-width="1" opacity=".55"/><line x1="-27" y1="10" x2="-27" y2="24" stroke="#59dff3" stroke-width="1" opacity=".8"/></g>
-            <g class="hero-drone__rotor" style="transform-origin:27px 17px;"><circle cx="27" cy="17" r="7" fill="none" stroke="#59dff3" stroke-width="1" opacity=".55"/><line x1="27" y1="10" x2="27" y2="24" stroke="#59dff3" stroke-width="1" opacity=".8"/></g>
+            <g class="hero-drone__hover">
+              <rect x="-10" y="-5" width="20" height="10" rx="3" fill="#0d1e38" stroke="#4f7bdc" stroke-width="1.2"/>
+              <circle cx="0" cy="0" r="2" fill="#4f7bdc" opacity=".6"/>
+              <line x1="-10" y1="-3" x2="-27" y2="-17" stroke="#4f7bdc" stroke-width="1.4"/>
+              <line x1="10" y1="-3" x2="27" y2="-17" stroke="#4f7bdc" stroke-width="1.4"/>
+              <line x1="-10" y1="3" x2="-27" y2="17" stroke="#4f7bdc" stroke-width="1.4"/>
+              <line x1="10" y1="3" x2="27" y2="17" stroke="#4f7bdc" stroke-width="1.4"/>
+              <g class="hero-drone__rotor" style="transform-origin:-27px -17px;"><circle cx="-27" cy="-17" r="7" fill="none" stroke="#59dff3" stroke-width="1" opacity=".55"/><line x1="-27" y1="-24" x2="-27" y2="-10" stroke="#59dff3" stroke-width="1" opacity=".8"/></g>
+              <g class="hero-drone__rotor" style="transform-origin:27px -17px;"><circle cx="27" cy="-17" r="7" fill="none" stroke="#59dff3" stroke-width="1" opacity=".55"/><line x1="27" y1="-24" x2="27" y2="-10" stroke="#59dff3" stroke-width="1" opacity=".8"/></g>
+              <g class="hero-drone__rotor" style="transform-origin:-27px 17px;"><circle cx="-27" cy="17" r="7" fill="none" stroke="#59dff3" stroke-width="1" opacity=".55"/><line x1="-27" y1="10" x2="-27" y2="24" stroke="#59dff3" stroke-width="1" opacity=".8"/></g>
+              <g class="hero-drone__rotor" style="transform-origin:27px 17px;"><circle cx="27" cy="17" r="7" fill="none" stroke="#59dff3" stroke-width="1" opacity=".55"/><line x1="27" y1="10" x2="27" y2="24" stroke="#59dff3" stroke-width="1" opacity=".8"/></g>
+            </g>
           </g>
-          <text x="198" y="148" class="hero-altitude-label hero-altitude-label--beginner">120 M · DRONE</text>
 
           <g class="hero-fall hero-fall--drone">
             <g class="hero-sway">
