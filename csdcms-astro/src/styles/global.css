@@ -381,7 +381,18 @@ a:focus-visible {
   transition: background .25s, color .25s, border-color .25s, transform .15s ease;
   cursor: pointer;
   white-space: nowrap;
-  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  /* Notch the top-right corner only. The polygon extends 2px past the
+     element on every other side so the 1px border is never painted on a
+     clip boundary — Firefox drops/flickers border pixels that coincide
+     with a clip-path edge. The diagonal still passes through
+     (100%-10px, 0) and (100%, 10px). */
+  clip-path: polygon(
+    -2px -2px,
+    calc(100% - 12px) -2px,
+    calc(100% + 2px) 12px,
+    calc(100% + 2px) calc(100% + 2px),
+    -2px calc(100% + 2px)
+  );
   overflow: hidden;
 }
 .btn--primary {
@@ -620,17 +631,13 @@ a:focus-visible {
 }
 
 /* ── Hero descent scenes: rocket → 1 km, drone → 120 m ────
-   Choreography per vehicle: freefall (accelerating) → chute
-   pops with an overshoot and the fall visibly decelerates →
-   slow steady descent with a pendulum sway → landing pulse. */
-.hero-altitude-label {
-  font-family: var(--f-mono);
-  font-size: 7.5px;
-  letter-spacing: .06em;
-}
-.hero-altitude-label--advanced { fill: #59dff3; opacity: .5; }
-.hero-altitude-label--beginner { fill: #4f7bdc; opacity: .45; }
-
+   Rocket: launches from below under thrust, burns out, coasts
+   to apogee, releases the CanSat, then tips over and falls
+   clear. Drone: hovers with a gentle bob and pops upward as
+   the payload mass releases. CanSat, both lanes: released at
+   the vehicle → accelerating freefall → chute pops with
+   overshoot and the fall visibly decelerates → slow steady
+   descent with a pendulum sway → landing pulse. */
 .hero-parachute,
 .hero-landing,
 .hero-sway,
