@@ -265,14 +265,24 @@ a:focus-visible {
   color: var(--star-soft);
 }
 
-/* ── Photo credits (footer, single compact row) ─────────────── */
+/* ── Footer credits (dev credit on top, photo credit beneath) ── */
 .footer__credits {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: var(--sp-2) var(--sp-6);
-  margin-top: var(--sp-4);
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-top: var(--sp-5);
+}
+.footer__credits-dev {
+  font-family: var(--f-mono);
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--star-soft);
+}
+.footer__credits-dev a { color: var(--signal); text-decoration: underline; text-underline-offset: 3px; }
+.footer__credits-dev a:hover { color: var(--star); }
+.footer__credits-photo {
+  display: block;
   font-family: var(--f-mono);
   font-size: .55rem;
   letter-spacing: .03em;
@@ -280,9 +290,8 @@ a:focus-visible {
   color: var(--star-dim);
   opacity: .6;
 }
-.footer__credits span:first-child { flex: 1 1 32ch; }
-.footer__credits a { color: var(--star-dim); text-decoration: underline; text-underline-offset: 2px; }
-.footer__credits a:hover { color: var(--signal); }
+.footer__credits-photo a { color: var(--star-dim); text-decoration: underline; text-underline-offset: 2px; }
+.footer__credits-photo a:hover { color: var(--signal); }
 
 /* ── Section header ─────────────────────────────────────── */
 .section-head { max-width: 52rem; margin-bottom: var(--sp-8); }
