@@ -74,17 +74,6 @@ const {
       document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
     }
 
-    // Pointer-tracked glow on cards (single delegated listener)
-    if (window.matchMedia('(hover: hover)').matches) {
-      document.addEventListener('pointermove', (e) => {
-        const card = e.target.closest?.('.card, .cat-card, .video-card, .crew-card');
-        if (!card) return;
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-        card.style.setProperty('--my', `${e.clientY - r.top}px`);
-      }, { passive: true });
-    }
-
     // Scroll-driven scenes: hero story + homepage flight path.
     // Targets are computed on scroll; displayed values ease toward them in a
     // shared rAF loop so motion stays fluid even with choppy wheel input.
