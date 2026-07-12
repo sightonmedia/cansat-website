@@ -265,16 +265,24 @@ a:focus-visible {
   color: var(--star-soft);
 }
 
-/* ── Photo credit line ──────────────────────────────────────── */
-.credit-line {
+/* ── Photo credits (footer, single compact row) ─────────────── */
+.footer__credits {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-6);
+  margin-top: var(--sp-4);
   font-family: var(--f-mono);
-  font-size: .62rem;
-  letter-spacing: .04em;
+  font-size: .55rem;
+  letter-spacing: .03em;
+  line-height: 1.7;
   color: var(--star-dim);
-  opacity: .7;
+  opacity: .6;
 }
-.credit-line a { color: var(--star-dim); text-decoration: underline; text-underline-offset: 2px; }
-.credit-line a:hover { color: var(--signal); }
+.footer__credits span:first-child { flex: 1 1 32ch; }
+.footer__credits a { color: var(--star-dim); text-decoration: underline; text-underline-offset: 2px; }
+.footer__credits a:hover { color: var(--signal); }
 
 /* ── Section header ─────────────────────────────────────── */
 .section-head { max-width: 52rem; margin-bottom: var(--sp-8); }
@@ -618,23 +626,37 @@ a:focus-visible {
     pointer-events: none;
   }
 
-  /* staggered headline intro */
+  /* staggered headline intro — slow, deliberate reveal */
   .hero__headline span,
   .hero__headline em {
     display: inline-block;
     opacity: 0;
-    transform: translateY(26px);
-    animation: heroWordsIn 1.1s var(--ease-out) forwards;
+    transform: translateY(48px) scale(.96);
+    animation: heroWordsIn 1.9s var(--ease-out) forwards;
   }
-  .hero__headline span:nth-child(2) { animation-delay: .3s; }
-  .hero__headline em { animation-delay: .6s; }
+  .hero__headline span:nth-child(2) { animation-delay: .6s; }
+  .hero__headline em { animation-delay: 1.2s; }
+
+  /* once the intro has played, the words hand over to the scroll scrub:
+     scrolling down plays the headline out word by word, scrolling back
+     up replays it in reverse (driven by --hero-headline-exit) */
+  html.js .headline-scrub .hero__scene--headline { opacity: 1; }
+  html.js .headline-scrub .hero__headline span,
+  html.js .headline-scrub .hero__headline em {
+    animation: none;
+    opacity: calc(1 - var(--w-exit, 0));
+    transform: translateY(calc(var(--w-exit, 0) * -64px)) scale(calc(1 - var(--w-exit, 0) * .05));
+  }
+  html.js .headline-scrub .hero__headline > *:nth-child(1) { --w-exit: clamp(0, calc(var(--hero-headline-exit, 0) * 1.9), 1); }
+  html.js .headline-scrub .hero__headline > *:nth-child(2) { --w-exit: clamp(0, calc(var(--hero-headline-exit, 0) * 1.9 - .45), 1); }
+  html.js .headline-scrub .hero__headline > *:nth-child(3) { --w-exit: clamp(0, calc(var(--hero-headline-exit, 0) * 1.9 - .9), 1); }
 
   .hero__visual::before { animation: heroPulse 6.5s ease-in-out infinite; }
   .hero__svg { animation: heroFloat 9s ease-in-out infinite; }
 }
 
 @keyframes heroWordsIn {
-  to { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 @keyframes heroFloat {
   0%, 100% { transform: translateY(0) rotate(-.8deg); }

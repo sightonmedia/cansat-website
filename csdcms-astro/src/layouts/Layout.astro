@@ -154,6 +154,10 @@ const {
 
       window.addEventListener('scroll', wake, { passive: true });
       window.addEventListener('resize', wake);
+
+      // after the intro animation finishes, hand the headline words over
+      // to the scroll scrub so they replay forwards/backwards with scroll
+      if (hero) setTimeout(() => hero.classList.add('headline-scrub'), 3200);
     }
 
     // Auto-update year in footer
