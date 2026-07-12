@@ -35,44 +35,49 @@ import { SPACE_PHOTOS, CANSAT_PHOTO, SUPPORTER_LOGOS } from '../lib/images';
 
         <!-- CanSat launch graphic -->
         <div class="hero__visual" aria-hidden="true">
-        <svg class="hero__svg" viewBox="0 0 560 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg class="hero__svg" viewBox="88 0 344 456" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <!-- Radar rings from implied Earth below -->
-          <circle cx="280" cy="680" r="440" fill="none" stroke="white" stroke-width="1" opacity=".035"/>
-          <circle cx="280" cy="680" r="580" fill="none" stroke="white" stroke-width="1" opacity=".022"/>
-          <circle cx="280" cy="680" r="700" fill="none" stroke="white" stroke-width="1" opacity=".014"/>
+          <circle cx="260" cy="680" r="440" fill="none" stroke="white" stroke-width="1" opacity=".035"/>
+          <circle cx="260" cy="680" r="580" fill="none" stroke="white" stroke-width="1" opacity=".022"/>
+          <circle cx="260" cy="680" r="700" fill="none" stroke="white" stroke-width="1" opacity=".014"/>
 
           <!-- ── ADVANCED: rocket climbs to apogee, releases a CanSat, falls away ── -->
           <g class="hero-rocket" transform="translate(330,52)">
             <g class="hero-rocket__flight">
-              <path d="M0,-26 C5,-18 8,-8 8,0 L-8,0 C-8,-8 -5,-18 0,-26 Z" fill="#cfe9f5" stroke="#59dff3" stroke-width="1"/>
-              <rect x="-8" y="0" width="16" height="22" fill="#0d1e38" stroke="#59dff3" stroke-width="1.2"/>
-              <circle cx="0" cy="9" r="3.4" fill="#59dff3" opacity=".5"/>
-              <path d="M-8,14 L-19,27 L-8,22 Z" fill="#4ed8f0" opacity=".85"/>
-              <path d="M8,14 L19,27 L8,22 Z" fill="#4ed8f0" opacity=".85"/>
-              <g class="hero-rocket__flamewrap">
-                <path class="hero-rocket__flame" d="M-5,22 Q0,35 0,42 Q0,35 5,22 Z" fill="#f06030" opacity=".85"/>
+              <g transform="scale(1.3)">
+                <path d="M0,-26 C5,-18 8,-8 8,0 L-8,0 C-8,-8 -5,-18 0,-26 Z" fill="#cfe9f5" stroke="#59dff3" stroke-width="1"/>
+                <rect x="-8" y="0" width="16" height="22" fill="#0d1e38" stroke="#59dff3" stroke-width="1.2"/>
+                <circle cx="0" cy="9" r="3.4" fill="#59dff3" opacity=".5"/>
+                <path d="M-8,14 L-19,27 L-8,22 Z" fill="#4ed8f0" opacity=".85"/>
+                <path d="M8,14 L19,27 L8,22 Z" fill="#4ed8f0" opacity=".85"/>
+                <g class="hero-rocket__flamewrap">
+                  <path class="hero-rocket__flame" d="M-5,22 Q0,35 0,42 Q0,35 5,22 Z" fill="#f06030" opacity=".85"/>
+                </g>
               </g>
             </g>
           </g>
 
           <g class="hero-fall hero-fall--rocket">
             <g class="hero-sway">
-              <g class="hero-parachute">
-                <path d="M306,90 C306,72 354,72 354,90 Z" fill="none" stroke="#59dff3" stroke-width="1.4"/>
-                <path d="M306,90 Q330,98 354,90" fill="none" stroke="#59dff3" stroke-width="1" opacity=".6"/>
-                <line x1="306" y1="90" x2="324" y2="108" stroke="#59dff3" stroke-width=".8" opacity=".7"/>
-                <line x1="330" y1="88" x2="330" y2="108" stroke="#59dff3" stroke-width=".8" opacity=".7"/>
-                <line x1="354" y1="90" x2="336" y2="108" stroke="#59dff3" stroke-width=".8" opacity=".7"/>
+              <g transform="translate(330,108) scale(1.3) translate(-330,-108)">
+                <g class="hero-parachute">
+                  <path d="M306,90 C306,72 354,72 354,90 Z" fill="none" stroke="#59dff3" stroke-width="1.4"/>
+                  <path d="M306,90 Q330,98 354,90" fill="none" stroke="#59dff3" stroke-width="1" opacity=".6"/>
+                  <line x1="306" y1="90" x2="324" y2="108" stroke="#59dff3" stroke-width=".8" opacity=".7"/>
+                  <line x1="330" y1="88" x2="330" y2="108" stroke="#59dff3" stroke-width=".8" opacity=".7"/>
+                  <line x1="354" y1="90" x2="336" y2="108" stroke="#59dff3" stroke-width=".8" opacity=".7"/>
+                </g>
+                <rect x="324" y="108" width="12" height="18" rx="1.5" fill="#0d1e38" stroke="#59dff3" stroke-width="1.2"/>
+                <rect x="324" y="112" width="12" height="3" fill="#59dff3" opacity=".25"/>
               </g>
-              <rect x="324" y="108" width="12" height="18" rx="1.5" fill="#0d1e38" stroke="#59dff3" stroke-width="1.2"/>
-              <rect x="324" y="112" width="12" height="3" fill="#59dff3" opacity=".25"/>
             </g>
           </g>
-          <ellipse class="hero-landing hero-landing--rocket" cx="330" cy="404" rx="15" ry="4" fill="#59dff3"/>
+          <ellipse class="hero-landing hero-landing--rocket" cx="330" cy="404" rx="20" ry="5" fill="#59dff3"/>
 
           <!-- ── BEGINNER: drone hovers at 120 m, releases a CanSat ── -->
           <g class="hero-drone" transform="translate(160,176)">
             <g class="hero-drone__hover">
+              <g transform="scale(1.3)">
               <rect x="-10" y="-5" width="20" height="10" rx="3" fill="#0d1e38" stroke="#4f7bdc" stroke-width="1.2"/>
               <circle cx="0" cy="0" r="2" fill="#4f7bdc" opacity=".6"/>
               <line x1="-10" y1="-3" x2="-27" y2="-17" stroke="#4f7bdc" stroke-width="1.4"/>
@@ -83,23 +88,26 @@ import { SPACE_PHOTOS, CANSAT_PHOTO, SUPPORTER_LOGOS } from '../lib/images';
               <g class="hero-drone__rotor" style="transform-origin:27px -17px;"><circle cx="27" cy="-17" r="7" fill="none" stroke="#59dff3" stroke-width="1" opacity=".55"/><line x1="27" y1="-24" x2="27" y2="-10" stroke="#59dff3" stroke-width="1" opacity=".8"/></g>
               <g class="hero-drone__rotor" style="transform-origin:-27px 17px;"><circle cx="-27" cy="17" r="7" fill="none" stroke="#59dff3" stroke-width="1" opacity=".55"/><line x1="-27" y1="10" x2="-27" y2="24" stroke="#59dff3" stroke-width="1" opacity=".8"/></g>
               <g class="hero-drone__rotor" style="transform-origin:27px 17px;"><circle cx="27" cy="17" r="7" fill="none" stroke="#59dff3" stroke-width="1" opacity=".55"/><line x1="27" y1="10" x2="27" y2="24" stroke="#59dff3" stroke-width="1" opacity=".8"/></g>
+              </g>
             </g>
           </g>
 
           <g class="hero-fall hero-fall--drone">
             <g class="hero-sway">
-              <g class="hero-parachute">
-                <path d="M136,202 C136,186 184,186 184,202 Z" fill="none" stroke="#4f7bdc" stroke-width="1.4"/>
-                <path d="M136,202 Q160,210 184,202" fill="none" stroke="#4f7bdc" stroke-width="1" opacity=".6"/>
-                <line x1="136" y1="202" x2="154" y2="220" stroke="#4f7bdc" stroke-width=".8" opacity=".7"/>
-                <line x1="160" y1="200" x2="160" y2="220" stroke="#4f7bdc" stroke-width=".8" opacity=".7"/>
-                <line x1="184" y1="202" x2="166" y2="220" stroke="#4f7bdc" stroke-width=".8" opacity=".7"/>
+              <g transform="translate(160,220) scale(1.3) translate(-160,-220)">
+                <g class="hero-parachute">
+                  <path d="M136,202 C136,186 184,186 184,202 Z" fill="none" stroke="#4f7bdc" stroke-width="1.4"/>
+                  <path d="M136,202 Q160,210 184,202" fill="none" stroke="#4f7bdc" stroke-width="1" opacity=".6"/>
+                  <line x1="136" y1="202" x2="154" y2="220" stroke="#4f7bdc" stroke-width=".8" opacity=".7"/>
+                  <line x1="160" y1="200" x2="160" y2="220" stroke="#4f7bdc" stroke-width=".8" opacity=".7"/>
+                  <line x1="184" y1="202" x2="166" y2="220" stroke="#4f7bdc" stroke-width=".8" opacity=".7"/>
+                </g>
+                <rect x="154" y="220" width="12" height="18" rx="1.5" fill="#0d1e38" stroke="#4f7bdc" stroke-width="1.2"/>
+                <rect x="154" y="224" width="12" height="3" fill="#4f7bdc" opacity=".25"/>
               </g>
-              <rect x="154" y="220" width="12" height="18" rx="1.5" fill="#0d1e38" stroke="#4f7bdc" stroke-width="1.2"/>
-              <rect x="154" y="224" width="12" height="3" fill="#4f7bdc" opacity=".25"/>
             </g>
           </g>
-          <ellipse class="hero-landing hero-landing--drone" cx="160" cy="404" rx="15" ry="4" fill="#4f7bdc"/>
+          <ellipse class="hero-landing hero-landing--drone" cx="160" cy="404" rx="20" ry="5" fill="#4f7bdc"/>
         </svg>
         </div>
       </div>
