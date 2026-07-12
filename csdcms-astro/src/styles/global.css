@@ -376,44 +376,56 @@ a:focus-visible {
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
-  padding: 10px 22px;
-  border: 1px solid transparent;
-  transition: background .25s, color .25s, border-color .25s, transform .15s ease;
+  padding: 11px 23px;
+  border: 0;
+  transition: background .25s, color .25s, transform .15s ease;
   cursor: pointer;
   white-space: nowrap;
-  /* Notch the top-right corner only. The polygon extends 2px past the
-     element on every other side so the 1px border is never painted on a
-     clip boundary — Firefox drops/flickers border pixels that coincide
-     with a clip-path edge. The diagonal still passes through
-     (100%-10px, 0) and (100%, 10px). */
-  clip-path: polygon(
-    -2px -2px,
-    calc(100% - 12px) -2px,
-    calc(100% + 2px) 12px,
-    calc(100% + 2px) calc(100% + 2px),
-    -2px calc(100% + 2px)
-  );
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
   overflow: hidden;
+}
+/* The outline frame is a solid ::before shaped by a single self-intersecting
+   clip polygon (outer ring clockwise, inner ring counter-clockwise), NOT a
+   CSS border: Firefox rasterizes borders and clip-paths on different pixel
+   grids at fractional zoom/DPR, which drops or displaces border segments on
+   clipped elements. A clip-only frame cannot desync from itself. */
+.btn--ghost::before,
+.btn--signal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: background .25s;
+  clip-path: polygon(
+    0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%, 0 0,
+    1px 1px, 1px calc(100% - 1px), calc(100% - 1px) calc(100% - 1px),
+    calc(100% - 1px) 10.4px, calc(100% - 10.4px) 1px, 1px 1px
+  );
+}
+/* the clip-path also swallows the default focus outline — draw it inside */
+.btn:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: -5px;
 }
 .btn--primary {
   background: var(--exhaust);
   color: var(--void);
-  border-color: var(--exhaust);
 }
-.btn--primary:hover { background: var(--exhaust-dark); border-color: var(--exhaust-dark); }
+.btn--primary:hover { background: var(--exhaust-dark); }
 .btn--ghost {
   background: transparent;
   color: var(--star);
-  border-color: var(--line-bright);
 }
-.btn--ghost:hover { border-color: var(--signal); color: var(--signal); }
+.btn--ghost::before { background: var(--line-bright); }
+.btn--ghost:hover { color: var(--signal); }
+.btn--ghost:hover::before { background: var(--signal); }
 .btn--signal {
   background: transparent;
   color: var(--signal);
-  border-color: var(--signal);
 }
+.btn--signal::before { background: var(--signal); }
 .btn--signal:hover { background: var(--signal); color: var(--void); }
-.btn--lg { padding: 14px 30px; font-size: .82rem; }
+.btn--lg { padding: 15px 31px; font-size: .82rem; }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .btn::after {
@@ -1127,7 +1139,7 @@ a:focus-visible {
   position: relative;
   z-index: 2;
 }
-.video-card__actions .btn { font-size: .65rem; padding: 6px 14px; }
+.video-card__actions .btn { font-size: .65rem; padding: 7px 15px; }
 
 /* ── Rules doc card ─────────────────────────────────────── */
 .doc-card {
